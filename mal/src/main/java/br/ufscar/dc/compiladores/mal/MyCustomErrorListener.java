@@ -1,67 +1,23 @@
 package br.ufscar.dc.compiladores.mal;
-import org.antlr.v4.runtime.ANTLRErrorListener;
-import org.antlr.v4.runtime.Parser;
+
+import org.antlr.v4.runtime.BaseErrorListener;
 import org.antlr.v4.runtime.RecognitionException;
 import org.antlr.v4.runtime.Recognizer;
 import org.antlr.v4.runtime.Token;
-import org.antlr.v4.runtime.atn.ATNConfigSet;
-import org.antlr.v4.runtime.dfa.DFA;
 
-import java.io.PrintWriter;
-import java.util.*;
-
-public class MyCustomErrorListener implements ANTLRErrorListener {
-    PrintWriter pw;
-    Integer contador_erro;
-    public MyCustomErrorListener(PrintWriter pw, Integer contador_erro) {
-        this.pw = pw;
-        this.contador_erro = contador_erro;
-    }
-
-    @Override
-    public void reportAmbiguity(Parser recognizer, DFA dfa, int startIndex, int stopIndex, boolean exact,
-            BitSet ambigAlts, ATNConfigSet configs) {
-    }
-
-    @Override
-    public void reportAttemptingFullContext(Parser recognizer, DFA dfa, int startIndex, int stopIndex,
-            BitSet conflictingAlts, ATNConfigSet configs) {
-    }
-
-    @Override
-    public void reportContextSensitivity(Parser recognizer, DFA dfa, int startIndex, int stopIndex, int prediction,
-            ATNConfigSet configs) {
-    }
+public class MyCustomErrorListener extends BaseErrorListener {
 
     @Override
     public void syntaxError(Recognizer<?, ?> recognizer, Object offendingSymbol, int line, int charPositionInLine,
             String msg, RecognitionException e) {
+        
         Token t = (Token) offendingSymbol;
+        String erro = t.getText();
+        
+        if(!erro.equals("<EOF>")) 
+            // Imprime a mensagem de erro sintatico no arquivo HTML
+            File.AddString("        <div id=\"erros\">" + 
+                    "Erro sintático perto de: " + erro + "</div>\n");
 
-        // Condicao de parada para interromper o programa
-        while(contador_erro < 1) {
-            if (malLexer.VOCABULARY.getDisplayName(t.getType()).equals("CADEIA_NAO_FECHADA")) {
-                pw.println("Linha " + t.getLine() + ": cadeia literal nao fechada");
-                pw.println("Fim da compilacao");
-                // Ao detectar algum erro o contador eh iterado e o programa terminado
-                contador_erro++;
-            } else if (malLexer.VOCABULARY.getDisplayName(t.getType()).equals("COMENTARIO_NAO_FECHADO")) {
-                pw.println("Linha " + t.getLine() + ": comentario nao fechado");
-                pw.println("Fim da compilacao");
-                contador_erro++;
-            } else if (malLexer.VOCABULARY.getDisplayName(t.getType()).equals("SIMBOLO_NAO_IDENTIFICADO")) {
-                pw.println("Linha " + t.getLine() + ": " + t.getText() + " - simbolo nao identificado");
-                pw.println("Fim da compilacao");
-                contador_erro++;
-            } else if (t.getText() == "<EOF>") {
-                pw.println("Linha " + t.getLine() + ": erro sintatico proximo a EOF");
-                pw.println("Fim da compilacao");
-                contador_erro++;
-            } else {
-                pw.println("Linha " + t.getLine() + ": erro sintatico proximo a " + t.getText());
-                pw.println("Fim da compilacao");
-                contador_erro++;
-            }
-        }
     }
 }

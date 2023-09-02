@@ -1,5 +1,8 @@
 // Generated from java-escape by ANTLR 4.11.1
 package br.ufscar.dc.compiladores.mal;
+
+  import br.ufscar.dc.compiladores.mal.File;
+
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -22,8 +25,8 @@ public class malParser extends Parser {
 		T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, T__23=24, 
 		T__24=25, T__25=26, T__26=27, T__27=28, T__28=29, T__29=30, T__30=31, 
 		T__31=32, T__32=33, T__33=34, T__34=35, T__35=36, T__36=37, T__37=38, 
-		T__38=39, Comentario=40, WhiteSpace=41, NUM=42, NOME=43, COMENTARIO_NAO_FECHADO=44, 
-		COMENTARIO_ANIME_NAO_FECHADO=45, SIMBOLO_NAO_IDENTIFICADO=46;
+		Comentario=39, WhiteSpace=40, NUM=41, NOME=42, ErroComentarioCodigo=43, 
+		ErroAddComentario=44, ANY=45;
 	public static final int
 		RULE_delimitador = 0, RULE_nota = 1, RULE_qtdEps = 2, RULE_tipo_anime = 3, 
 		RULE_genero = 4, RULE_publico_alvo = 5, RULE_statusCompleto = 6, RULE_statusAssistindo = 7, 
@@ -49,7 +52,8 @@ public class malParser extends Parser {
 			"'Esporte'", "'Shounen'", "'Seinen'", "'Shoujo'", "'R18'", "'Completo'", 
 			"'Assistindo'", "'Abandonado'", "'inicio'", "'Nome'", "'Tipo'", "'Genero'", 
 			"'Quantidade_Eps'", "'Publico_Alvo'", "'fim'", "'comeco_avaliacao'", 
-			"'Nota'", "'Status'", "'fim_avaliacao'", "'{'", "'}'"
+			"'Nota'", "'Status'", "'fim_avaliacao'", "'}'", null, null, null, null, 
+			"'['", "'{'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
@@ -58,8 +62,8 @@ public class malParser extends Parser {
 			null, null, null, null, null, null, null, null, null, null, null, null, 
 			null, null, null, null, null, null, null, null, null, null, null, null, 
 			null, null, null, null, null, null, null, null, null, null, null, null, 
-			null, null, null, null, "Comentario", "WhiteSpace", "NUM", "NOME", "COMENTARIO_NAO_FECHADO", 
-			"COMENTARIO_ANIME_NAO_FECHADO", "SIMBOLO_NAO_IDENTIFICADO"
+			null, null, null, "Comentario", "WhiteSpace", "NUM", "NOME", "ErroComentarioCodigo", 
+			"ErroAddComentario", "ANY"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -944,7 +948,7 @@ public class malParser extends Parser {
 			setState(111);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if (_la==T__37) {
+			if (_la==ErroAddComentario) {
 				{
 				setState(110);
 				cmdAddComentario();
@@ -1176,6 +1180,10 @@ public class malParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class CmdAddComentarioContext extends ParserRuleContext {
+		public List<TerminalNode> ErroAddComentario() { return getTokens(malParser.ErroAddComentario); }
+		public TerminalNode ErroAddComentario(int i) {
+			return getToken(malParser.ErroAddComentario, i);
+		}
 		public TerminalNode NOME() { return getToken(malParser.NOME, 0); }
 		public CmdAddComentarioContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -1204,18 +1212,18 @@ public class malParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(126);
-			match(T__37);
+			match(ErroAddComentario);
 			setState(127);
 			match(NOME);
 			setState(131);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 139912854634494L) != 0) {
+			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 52501680226302L) != 0) {
 				{
 				{
 				setState(128);
 				_la = _input.LA(1);
-				if ( _la <= 0 || (_la==T__37 || _la==T__38) ) {
+				if ( _la <= 0 || (_la==T__37 || _la==ErroAddComentario) ) {
 				_errHandler.recoverInline(this);
 				}
 				else {
@@ -1230,7 +1238,7 @@ public class malParser extends Parser {
 				_la = _input.LA(1);
 			}
 			setState(134);
-			match(T__38);
+			match(T__37);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1245,7 +1253,7 @@ public class malParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u0001.\u0089\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
+		"\u0004\u0001-\u0089\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
 		"\u0002\u0007\u0002\u0002\u0003\u0007\u0003\u0002\u0004\u0007\u0004\u0002"+
 		"\u0005\u0007\u0005\u0002\u0006\u0007\u0006\u0002\u0007\u0007\u0007\u0002"+
 		"\b\u0007\b\u0002\t\u0007\t\u0002\n\u0007\n\u0002\u000b\u0007\u000b\u0002"+
@@ -1267,8 +1275,8 @@ public class malParser extends Parser {
 		"\u0014\u0082\b\u0014\n\u0014\f\u0014\u0085\t\u0014\u0001\u0014\u0001\u0014"+
 		"\u0001\u0014\u0000\u0000\u0015\u0000\u0002\u0004\u0006\b\n\f\u000e\u0010"+
 		"\u0012\u0014\u0016\u0018\u001a\u001c\u001e \"$&(\u0000\u0004\u0001\u0000"+
-		"\u0002\u0005\u0001\u0000\u0006\u0013\u0001\u0000\u0014\u0017\u0001\u0000"+
-		"&\'z\u0000*\u0001\u0000\u0000\u0000\u0002,\u0001\u0000\u0000\u0000\u0004"+
+		"\u0002\u0005\u0001\u0000\u0006\u0013\u0001\u0000\u0014\u0017\u0002\u0000"+
+		"&&,,z\u0000*\u0001\u0000\u0000\u0000\u0002,\u0001\u0000\u0000\u0000\u0004"+
 		".\u0001\u0000\u0000\u0000\u00060\u0001\u0000\u0000\u0000\b2\u0001\u0000"+
 		"\u0000\u0000\n4\u0001\u0000\u0000\u0000\f6\u0001\u0000\u0000\u0000\u000e"+
 		"8\u0001\u0000\u0000\u0000\u0010:\u0001\u0000\u0000\u0000\u0012<\u0001"+
@@ -1277,13 +1285,13 @@ public class malParser extends Parser {
 		"_\u0001\u0000\u0000\u0000\u001ea\u0001\u0000\u0000\u0000 s\u0001\u0000"+
 		"\u0000\u0000\"u\u0001\u0000\u0000\u0000$z\u0001\u0000\u0000\u0000&|\u0001"+
 		"\u0000\u0000\u0000(~\u0001\u0000\u0000\u0000*+\u0005\u0001\u0000\u0000"+
-		"+\u0001\u0001\u0000\u0000\u0000,-\u0005*\u0000\u0000-\u0003\u0001\u0000"+
-		"\u0000\u0000./\u0005*\u0000\u0000/\u0005\u0001\u0000\u0000\u000001\u0007"+
+		"+\u0001\u0001\u0000\u0000\u0000,-\u0005)\u0000\u0000-\u0003\u0001\u0000"+
+		"\u0000\u0000./\u0005)\u0000\u0000/\u0005\u0001\u0000\u0000\u000001\u0007"+
 		"\u0000\u0000\u00001\u0007\u0001\u0000\u0000\u000023\u0007\u0001\u0000"+
 		"\u00003\t\u0001\u0000\u0000\u000045\u0007\u0002\u0000\u00005\u000b\u0001"+
 		"\u0000\u0000\u000067\u0005\u0018\u0000\u00007\r\u0001\u0000\u0000\u0000"+
 		"89\u0005\u0019\u0000\u00009\u000f\u0001\u0000\u0000\u0000:;\u0005\u001a"+
-		"\u0000\u0000;\u0011\u0001\u0000\u0000\u0000<=\u0005+\u0000\u0000=\u0013"+
+		"\u0000\u0000;\u0011\u0001\u0000\u0000\u0000<=\u0005*\u0000\u0000=\u0013"+
 		"\u0001\u0000\u0000\u0000>?\u0003\u0012\t\u0000?\u0015\u0001\u0000\u0000"+
 		"\u0000@A\u0003\u0018\f\u0000A\u0017\u0001\u0000\u0000\u0000BD\u0003\u001a"+
 		"\r\u0000CB\u0001\u0000\u0000\u0000DE\u0001\u0000\u0000\u0000EC\u0001\u0000"+
@@ -1309,12 +1317,12 @@ public class malParser extends Parser {
 		"x{\u0003\u000e\u0007\u0000y{\u0003\u0010\b\u0000zw\u0001\u0000\u0000\u0000"+
 		"zx\u0001\u0000\u0000\u0000zy\u0001\u0000\u0000\u0000{%\u0001\u0000\u0000"+
 		"\u0000|}\u0003\u0004\u0002\u0000}\'\u0001\u0000\u0000\u0000~\u007f\u0005"+
-		"&\u0000\u0000\u007f\u0083\u0005+\u0000\u0000\u0080\u0082\b\u0003\u0000"+
+		",\u0000\u0000\u007f\u0083\u0005*\u0000\u0000\u0080\u0082\b\u0003\u0000"+
 		"\u0000\u0081\u0080\u0001\u0000\u0000\u0000\u0082\u0085\u0001\u0000\u0000"+
 		"\u0000\u0083\u0081\u0001\u0000\u0000\u0000\u0083\u0084\u0001\u0000\u0000"+
 		"\u0000\u0084\u0086\u0001\u0000\u0000\u0000\u0085\u0083\u0001\u0000\u0000"+
-		"\u0000\u0086\u0087\u0005\'\u0000\u0000\u0087)\u0001\u0000\u0000\u0000"+
-		"\u0006EJloz\u0083";
+		"\u0000\u0086\u0087\u0005&\u0000\u0000\u0087)\u0001\u0000\u0000\u0000\u0006"+
+		"EJloz\u0083";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

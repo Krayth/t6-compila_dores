@@ -1,5 +1,9 @@
 grammar mal;
 
+@header {
+  import br.ufscar.dc.compiladores.mal.File;
+}
+
 //comentario
 Comentario:
     '[' ~('n'|'\r'|']'|'[')* '\r'? ']' { skip(); };
@@ -61,8 +65,24 @@ cmdAddComentario:
     '}';
 
 //comentario nao fechado
-COMENTARIO_NAO_FECHADO: '[' ~(']')* '\n';
+//COMENTARIO_NAO_FECHADO: '[' ~(']')* '\n';
 
-COMENTARIO_ANIME_NAO_FECHADO: '{' ~('}')* '\n';
+ErroComentarioCodigo: 
+    '['
+    { File.AddString("                    <div id=\"erros\">" + 
+                    "Comentario nao fechado.</div>\n");
+    File.gravaArquivo(); };
 
-SIMBOLO_NAO_IDENTIFICADO: '~' | '$' | '@' | '|' | '`';
+ErroAddComentario:
+    '{'
+    { File.AddString("                    <div id=\"erros\">" + 
+                    "Comentario nao fechado.</div>\n");
+    File.gravaArquivo(); };
+
+ANY: 
+    .
+    { File.AddString("                    <div id=\"erros\">" + 
+                    "Símbolo não identificado</div>\n");
+    File.gravaArquivo(); };
+
+//SIMBOLO_NAO_IDENTIFICADO: '~' | '$' | '@' | '|' | '`';
