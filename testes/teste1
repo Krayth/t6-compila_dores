@@ -1,0 +1,23 @@
+inicio
+	Nome:Naruto
+	Tipo:TV
+	Genero:Acao
+	Quantidade_Eps:250
+	Publico_Alvo:Shounen
+fim
+
+inicio
+	Nome:One Piece
+	Tipo:TV
+	Genero:Acao
+	Quantidade_Eps:500
+	Publico_Alvo:Shounen
+fim
+
+comeco_avaliacao
+	Nome:Naruto
+	Nota:10
+	Status:Completo
+	250
+	{Muito ruim
+fim_avaliacao

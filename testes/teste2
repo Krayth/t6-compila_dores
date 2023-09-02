@@ -1,0 +1,15 @@
+comeco_avaliacao
+	Nome:Naruto
+	Nota:10
+	Status:Completo
+	250
+	{Muito ruim}
+fim_avaliacao
+
+comeco_avaliacao
+	Nome:One Piece
+	Nota:1
+	Status:Assistindo
+	50
+	{Muito ruim}
+fim_avaliacao
