@@ -1,4 +1,4 @@
-package br.ufscar.dc.compiladores.mal;
+/*package br.ufscar.dc.compiladores.mal;
 
 import br.ufscar.dc.compiladores.mal.TabelaDeSimbolos.Tipo_anime;
 
@@ -9,7 +9,7 @@ public class Semantico extends malBaseVisitor<Void>{
     int num_avaliacoes = 0;
 
     @Override
-    public Void visitPrograma(malParser.ProgramContext ctx) {
+    public Void visitProgram(malParser.ProgramContext ctx) {
         tabela = new TabelaDeSimbolos();
         return super.visitProgram(ctx);
     }
@@ -143,3 +143,4 @@ public class Semantico extends malBaseVisitor<Void>{
         return super.visitCmdAddComentario(ctx);
     }
 }
+*/

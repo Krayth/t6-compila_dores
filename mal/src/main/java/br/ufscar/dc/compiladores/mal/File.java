@@ -32,8 +32,12 @@ public class File {
                 "        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n" +
                 "        <title>Catálogo de animes com avaliações</title>\n" +
                 "        <style type=\"text/css\">\n" +
-                "            body {\n" +
-                "                background-image: url('https://i.imgur.com/ClPBeje.jpeg');\n" +
+                "            html {\n" +
+                "                background: url('https://wallpapercave.com/wp/wp3209489.jpg') no-repeat center center fixed;\n" +
+                "                -webkit-background-size: cover;"+  
+                "                -moz-background-size: cover;"+
+                "                -o-background-size: cover;"+
+                "                background-size: cover;"+
                 "            }\n" +                                
                 "            h1 {\n" +
                 "                text-align: center;\n" +
@@ -58,22 +62,22 @@ public class File {
                 "                color: #6A60E9;\n" +
                 "                font-family: sans-serif;\n" +
                 "                font-weight: bold;\n" +
-                "                background-color: #EFDCF5;\n" +
+                "                background-color: #8d91d0;\n" +
                 "            }\n" +
                 "\n" +
                 "            #erros {\n" +
                 "                margin: 0 auto;\n" +
                 "                border-style: solid;\n" +
-                "                border-color: #A0522D;\n" +
+                "                border-color: #350A58;\n" +
                 "                border-width: thin;\n" +
                 "                border-radius: 10px;\n" +
                 "                margin: 10px;\n" +
                 "                padding: 10px;\n" +
                 "                text-align: center;\n" +
-                "                color: #EE0000;\n" +
+                "                color: #321239;\n" +
                 "                font-family: sans-serif;\n" +
                 "                font-weight: bold;\n" +
-                "                background-color: #F5F5DC;\n" +
+                "                background-color: #8d91d0;\n" +
                 "            }\n" +
                 "\n" +
                 "            .tooltip {\n" +
@@ -101,7 +105,7 @@ public class File {
                 "    </head>\n" +
                 "         \n" +
                 "    <body>\n" +
-                "<h1>RPG Maker</h1>" +
+                "<h1><font color=#1d0530>Catálogo de Animes com Avaliações</h1>" +
                 "        <table>\n" +
                 "            <tr>\n");
     }

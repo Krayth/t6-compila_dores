@@ -6,7 +6,7 @@ grammar mal;
 
 //comentario
 Comentario:
-    '[' ~('n'|'\r'|']'|'[')* '\r'? ']' { skip(); };
+    '[' ~('\n'|'\r'|']'|'[')* '\r'? ']' { skip(); };
 WhiteSpace:
     (' ' | '\t' | '\r' | '\n') { skip(); };
 
@@ -61,7 +61,7 @@ cmdAddStatus: statusCompleto | statusAssistindo | statusAbandonado;
 cmdAddEps: qtdEps;
 cmdAddComentario:
     '{'
-        NOME ~( '{' | '}' )*
+        ~('\n'|'\r'|'{' | '}' )*
     '}';
 
 //comentario nao fechado
@@ -70,13 +70,13 @@ cmdAddComentario:
 ErroComentarioCodigo: 
     '['
     { File.AddString("                    <div id=\"erros\">" + 
-                    "Comentario nao fechado.</div>\n");
+                    "Comentario de Código não Fechado.</div>\n");
     File.gravaArquivo(); };
 
 ErroAddComentario:
-    '{'
+    '{' 
     { File.AddString("                    <div id=\"erros\">" + 
-                    "Comentario nao fechado.</div>\n");
+                    "Comentario de Avaliação não Fechado.</div>\n");
     File.gravaArquivo(); };
 
 ANY: 

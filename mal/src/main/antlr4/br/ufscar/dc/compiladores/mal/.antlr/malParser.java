@@ -24,8 +24,8 @@ public class malParser extends Parser {
 		T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, T__23=24, 
 		T__24=25, T__25=26, T__26=27, T__27=28, T__28=29, T__29=30, T__30=31, 
 		T__31=32, T__32=33, T__33=34, T__34=35, T__35=36, T__36=37, T__37=38, 
-		Comentario=39, WhiteSpace=40, NUM=41, NOME=42, ErroComentarioCodigo=43, 
-		ErroAddComentario=44, ANY=45;
+		T__38=39, T__39=40, Comentario=41, WhiteSpace=42, NUM=43, NOME=44, ErroComentarioCodigo=45, 
+		ErroAddComentario=46, ANY=47;
 	public static final int
 		RULE_delimitador = 0, RULE_nota = 1, RULE_qtdEps = 2, RULE_tipo_anime = 3, 
 		RULE_genero = 4, RULE_publico_alvo = 5, RULE_statusCompleto = 6, RULE_statusAssistindo = 7, 
@@ -51,8 +51,8 @@ public class malParser extends Parser {
 			"'Esporte'", "'Shounen'", "'Seinen'", "'Shoujo'", "'R18'", "'Completo'", 
 			"'Assistindo'", "'Abandonado'", "'inicio'", "'Nome'", "'Tipo'", "'Genero'", 
 			"'Quantidade_Eps'", "'Publico_Alvo'", "'fim'", "'comeco_avaliacao'", 
-			"'Nota'", "'Status'", "'fim_avaliacao'", "'}'", null, null, null, null, 
-			"'['", "'{'"
+			"'Nota'", "'Status'", "'fim_avaliacao'", "'\n'", "'\r'", "'}'", null, 
+			null, null, null, "'['", "'{'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
@@ -61,8 +61,8 @@ public class malParser extends Parser {
 			null, null, null, null, null, null, null, null, null, null, null, null, 
 			null, null, null, null, null, null, null, null, null, null, null, null, 
 			null, null, null, null, null, null, null, null, null, null, null, null, 
-			null, null, null, "Comentario", "WhiteSpace", "NUM", "NOME", "ErroComentarioCodigo", 
-			"ErroAddComentario", "ANY"
+			null, null, null, null, null, "Comentario", "WhiteSpace", "NUM", "NOME", 
+			"ErroComentarioCodigo", "ErroAddComentario", "ANY"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -902,7 +902,6 @@ public class malParser extends Parser {
 		public TerminalNode ErroAddComentario(int i) {
 			return getToken(malParser.ErroAddComentario, i);
 		}
-		public TerminalNode NOME() { return getToken(malParser.NOME, 0); }
 		public CmdAddComentarioContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -918,17 +917,15 @@ public class malParser extends Parser {
 			{
 			setState(126);
 			match(ErroAddComentario);
-			setState(127);
-			match(NOME);
-			setState(131);
+			setState(130);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2) | (1L << T__3) | (1L << T__4) | (1L << T__5) | (1L << T__6) | (1L << T__7) | (1L << T__8) | (1L << T__9) | (1L << T__10) | (1L << T__11) | (1L << T__12) | (1L << T__13) | (1L << T__14) | (1L << T__15) | (1L << T__16) | (1L << T__17) | (1L << T__18) | (1L << T__19) | (1L << T__20) | (1L << T__21) | (1L << T__22) | (1L << T__23) | (1L << T__24) | (1L << T__25) | (1L << T__26) | (1L << T__27) | (1L << T__28) | (1L << T__29) | (1L << T__30) | (1L << T__31) | (1L << T__32) | (1L << T__33) | (1L << T__34) | (1L << T__35) | (1L << T__36) | (1L << Comentario) | (1L << WhiteSpace) | (1L << NUM) | (1L << NOME) | (1L << ErroComentarioCodigo) | (1L << ANY))) != 0)) {
 				{
 				{
-				setState(128);
+				setState(127);
 				_la = _input.LA(1);
-				if ( _la <= 0 || (_la==T__37 || _la==ErroAddComentario) ) {
+				if ( _la <= 0 || ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__37) | (1L << T__38) | (1L << T__39) | (1L << ErroAddComentario))) != 0)) ) {
 				_errHandler.recoverInline(this);
 				}
 				else {
@@ -938,12 +935,12 @@ public class malParser extends Parser {
 				}
 				}
 				}
-				setState(133);
+				setState(132);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(134);
-			match(T__37);
+			setState(133);
+			match(T__39);
 			}
 		}
 		catch (RecognitionException re) {
@@ -958,25 +955,25 @@ public class malParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3/\u008b\4\2\t\2\4"+
-		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
-		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\61\u008a\4\2\t\2"+
+		"\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13"+
+		"\t\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\3\2\3\2\3\3\3\3\3\4\3\4\3\5\3"+
 		"\5\3\6\3\6\3\7\3\7\3\b\3\b\3\t\3\t\3\n\3\n\3\13\3\13\3\f\3\f\3\r\3\r\3"+
 		"\16\6\16F\n\16\r\16\16\16G\3\16\7\16K\n\16\f\16\16\16N\13\16\3\17\3\17"+
 		"\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17"+
 		"\3\17\3\17\3\20\3\20\3\21\3\21\3\21\3\21\3\21\3\21\3\21\3\21\3\21\3\21"+
 		"\3\21\5\21o\n\21\3\21\5\21r\n\21\3\21\3\21\3\22\3\22\3\23\3\23\3\24\3"+
-		"\24\3\24\5\24}\n\24\3\25\3\25\3\26\3\26\3\26\7\26\u0084\n\26\f\26\16\26"+
-		"\u0087\13\26\3\26\3\26\3\26\2\2\27\2\4\6\b\n\f\16\20\22\24\26\30\32\34"+
-		"\36 \"$&(*\2\6\3\2\4\7\3\2\b\25\3\2\26\31\4\2((..\2|\2,\3\2\2\2\4.\3\2"+
-		"\2\2\6\60\3\2\2\2\b\62\3\2\2\2\n\64\3\2\2\2\f\66\3\2\2\2\168\3\2\2\2\20"+
+		"\24\3\24\5\24}\n\24\3\25\3\25\3\26\3\26\7\26\u0083\n\26\f\26\16\26\u0086"+
+		"\13\26\3\26\3\26\3\26\2\2\27\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \""+
+		"$&(*\2\6\3\2\4\7\3\2\b\25\3\2\26\31\4\2(*\60\60\2{\2,\3\2\2\2\4.\3\2\2"+
+		"\2\6\60\3\2\2\2\b\62\3\2\2\2\n\64\3\2\2\2\f\66\3\2\2\2\168\3\2\2\2\20"+
 		":\3\2\2\2\22<\3\2\2\2\24>\3\2\2\2\26@\3\2\2\2\30B\3\2\2\2\32E\3\2\2\2"+
 		"\34O\3\2\2\2\36a\3\2\2\2 c\3\2\2\2\"u\3\2\2\2$w\3\2\2\2&|\3\2\2\2(~\3"+
-		"\2\2\2*\u0080\3\2\2\2,-\7\3\2\2-\3\3\2\2\2./\7+\2\2/\5\3\2\2\2\60\61\7"+
-		"+\2\2\61\7\3\2\2\2\62\63\t\2\2\2\63\t\3\2\2\2\64\65\t\3\2\2\65\13\3\2"+
+		"\2\2\2*\u0080\3\2\2\2,-\7\3\2\2-\3\3\2\2\2./\7-\2\2/\5\3\2\2\2\60\61\7"+
+		"-\2\2\61\7\3\2\2\2\62\63\t\2\2\2\63\t\3\2\2\2\64\65\t\3\2\2\65\13\3\2"+
 		"\2\2\66\67\t\4\2\2\67\r\3\2\2\289\7\32\2\29\17\3\2\2\2:;\7\33\2\2;\21"+
-		"\3\2\2\2<=\7\34\2\2=\23\3\2\2\2>?\7,\2\2?\25\3\2\2\2@A\5\24\13\2A\27\3"+
+		"\3\2\2\2<=\7\34\2\2=\23\3\2\2\2>?\7.\2\2?\25\3\2\2\2@A\5\24\13\2A\27\3"+
 		"\2\2\2BC\5\32\16\2C\31\3\2\2\2DF\5\34\17\2ED\3\2\2\2FG\3\2\2\2GE\3\2\2"+
 		"\2GH\3\2\2\2HL\3\2\2\2IK\5 \21\2JI\3\2\2\2KN\3\2\2\2LJ\3\2\2\2LM\3\2\2"+
 		"\2M\33\3\2\2\2NL\3\2\2\2OP\7\35\2\2PQ\7\36\2\2QR\7\3\2\2RS\5\26\f\2ST"+
@@ -987,10 +984,10 @@ public class malParser extends Parser {
 		"\2\2\2no\3\2\2\2oq\3\2\2\2pr\5*\26\2qp\3\2\2\2qr\3\2\2\2rs\3\2\2\2st\7"+
 		"\'\2\2t!\3\2\2\2uv\5\24\13\2v#\3\2\2\2wx\5\4\3\2x%\3\2\2\2y}\5\16\b\2"+
 		"z}\5\20\t\2{}\5\22\n\2|y\3\2\2\2|z\3\2\2\2|{\3\2\2\2}\'\3\2\2\2~\177\5"+
-		"\6\4\2\177)\3\2\2\2\u0080\u0081\7.\2\2\u0081\u0085\7,\2\2\u0082\u0084"+
-		"\n\5\2\2\u0083\u0082\3\2\2\2\u0084\u0087\3\2\2\2\u0085\u0083\3\2\2\2\u0085"+
-		"\u0086\3\2\2\2\u0086\u0088\3\2\2\2\u0087\u0085\3\2\2\2\u0088\u0089\7("+
-		"\2\2\u0089+\3\2\2\2\bGLnq|\u0085";
+		"\6\4\2\177)\3\2\2\2\u0080\u0084\7\60\2\2\u0081\u0083\n\5\2\2\u0082\u0081"+
+		"\3\2\2\2\u0083\u0086\3\2\2\2\u0084\u0082\3\2\2\2\u0084\u0085\3\2\2\2\u0085"+
+		"\u0087\3\2\2\2\u0086\u0084\3\2\2\2\u0087\u0088\7*\2\2\u0088+\3\2\2\2\b"+
+		"GLnq|\u0084";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

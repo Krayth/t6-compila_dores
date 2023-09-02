@@ -22,20 +22,20 @@ public class App {
             malLexer lex = new malLexer(cs);
             //Cria o parser
             CommonTokenStream tokens = new CommonTokenStream(lex);
-
-            malParser parser = new malParser(tokens);
+            
             //Remove tratamento padrão
-            parser.removeErrorListeners();
-
+            malParser parser = new malParser(tokens);
+            
             //Chamada do tratador de erros
             MyCustomErrorListener mcel = new MyCustomErrorListener();
+            parser.removeErrorListeners();
             parser.addErrorListener(mcel);
             
-            ProgramContext arvore = parser.program();
+            // ProgramContext arvore = parser.program();
             // Semantico as = new Semantico();
             // as.visitProgram(arvore);
 
-            // parser.program();
+            parser.program();
 
             File.gravaArquivo();
         } catch (IOException error) {
