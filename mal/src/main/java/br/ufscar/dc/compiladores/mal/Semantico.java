@@ -37,8 +37,10 @@ public class Semantico extends malBaseVisitor<Void>{
                 File.addDiv(div);
                 num_animes++;
         }
+    }
 
-    @Override Void visitDeclare_avaliacao(malParser.Declare_avaliacaoContext ctx) {
+    @Override 
+    public Void visitDeclare_avaliacao(malParser.Declare_avaliacaoContext ctx) {
 
         String nome_anime = ctx.cmdAddNome().nome_anime().getText();
 
