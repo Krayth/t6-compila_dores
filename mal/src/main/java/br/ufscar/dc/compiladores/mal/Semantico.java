@@ -104,15 +104,23 @@ public class Semantico extends malBaseVisitor<Void>{
     public Void visitCmdAddEps(malParser.CmdAddEpsContext ctx) {
 
         String nome_anime = ctx.cmdAddNome().nome_anime.getText();
-        int eps_anime = ctx.cmdAddEps().status_anime.getText();
+        int eps_anime = ctx.cmdAddEps().eps_anime.getAltNumber();
         String status_anime = ctx.cmdAddStatus().status_anime.getText();
 
         if (!(tabela.existe(nome_anime))) {
             File.AddString("                    <div id=\"erros\">" + 
                 "Atenção!! O Anime " + nome_anime + " não existe.</div>\n");
         }
-        else {
-            //TODO
+        else if (status_anime == "Completo"){
+            int epsCompleto = tabela.verificar_Total_eps(nome_anime);
+            String div = "                <td><div id=\"box\">\n"
+                            + "                    <h1><font color=\"#077F09\">" + epsCompleto + "</font></h1>\n";
+            File.addDivAvaliacao(div);
+        }
+        else{
+            String div = "                <td><div id=\"box\">\n"
+                            + "                    <h1><font color=\"#077F09\">" + eps_anime + "</font></h1>\n";
+            File.addDivAvaliacao(div);
         }
         return super.visitCmdAddEps(ctx);
     }

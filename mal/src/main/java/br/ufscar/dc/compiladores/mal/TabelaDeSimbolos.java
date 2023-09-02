@@ -81,6 +81,10 @@ public class TabelaDeSimbolos {
         return tabela.get(nome).genero;
     }
 
+    public int verificar_Total_eps(String nome){
+        return tabela.get(nome).total_eps;
+    }
+
     public Publico_alvo verificar_Publico_alvo(String nome) {
         return tabela.get(nome).publico_alvo;
     }
