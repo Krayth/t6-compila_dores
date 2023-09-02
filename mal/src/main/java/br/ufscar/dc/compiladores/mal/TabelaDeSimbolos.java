@@ -29,6 +29,13 @@ public class TabelaDeSimbolos {
         INVALIDO   
     }
 
+    public enum Status {
+        COMPLETO,
+        ASSISTINDO,
+        ABANDONADO,
+        INVALIDO   
+    }
+
     class EntradaTabelaSimbolos {
         String nome_anime;
         Tipo_anime tipo_anime;
@@ -57,7 +64,8 @@ public class TabelaDeSimbolos {
 
     }
 
-    public void adicionarAvaliacao() {
+    public void adicionarAvaliacao(String nome, int nota, String status, int eps, 
+        String comentario) {
 
     }
 
@@ -76,4 +84,8 @@ public class TabelaDeSimbolos {
     public Publico_alvo verificar_Publico_alvo(String nome) {
         return tabela.get(nome).publico_alvo;
     }
+
+    /*public Status verificar_Status(String nome) {
+        return tabela.get(nome).Status;
+    }*/
 }

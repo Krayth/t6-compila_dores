@@ -1,5 +1,7 @@
 package br.ufscar.dc.compiladores.mal;
 
+import java.io.File;
+
 import br.ufscar.dc.compiladores.mal.TabelaDeSimbolos.Tipo_anime;
 
 public class Semantico extends malBaseVisitor<Void>{
@@ -31,19 +33,19 @@ public class Semantico extends malBaseVisitor<Void>{
             String div = "                <td><div id=\"box\">\n"
                         + "                    <h1><font color=\"#077F09\">" + nome_anime + "</font></h1>\n"
                         + "                    <font color=\"#2D7F2F\">Tipo: " + tipo_anime + "</font><br>\n"
-                        + "                    <font color=\"#2D7F2F\">Quantidade de Episodios: " + total_eps + "</font><p><p><p>\n"     
-                        + "                    <font color=\"#2D7F2F\">Genero: " + genero + "</font><p><p><p>\n"
-                        + "                    <font color=\"#2D7F2F\">Publico Alvo: " + publico_alvo + "</font><p><p><p>\n";
+                        + "                    <font color=\"#2D7F2F\">Quantidade de Episódios: " + total_eps + "</font><p><p><p>\n"     
+                        + "                    <font color=\"#2D7F2F\">Gênero: " + genero + "</font><p><p><p>\n"
+                        + "                    <font color=\"#2D7F2F\">Público Alvo: " + publico_alvo + "</font><p><p><p>\n";
                 File.addDiv(div);
                 num_animes++;
         }
+        return super.visitDeclare_anime(ctx);
     }
 
-    @Override 
+    @Override
     public Void visitDeclare_avaliacao(malParser.Declare_avaliacaoContext ctx) {
 
         String nome_anime = ctx.cmdAddNome().nome_anime().getText();
-
 
         if (!(tabela.existe(nome_anime))) {
             File.AddString("                    <div id=\"erros\">" + 
@@ -57,5 +59,81 @@ public class Semantico extends malBaseVisitor<Void>{
             num_avaliacoes++;
 
         }
+        return super.visitDeclare_avaliacao(ctx);
+    }
+
+    @Override 
+    public Void visitCmdAddNota(malParser.CmdAddNotaContext ctx) {
+
+        String nome_anime = ctx.cmdAddNome().nome_anime.getText();
+        int nota_anime = ctx.cmdAddNota().nota_anime.getText();
+
+        if (!(tabela.existe(nome_anime))) {
+            File.AddString("                    <div id=\"erros\">" + 
+                "Atenção!! O Anime " + nome_anime + " não existe.</div>\n");
+        }
+        else {
+            if (nota_anime < 0 || nota_anime > 10) {
+                File.AddString("                    <div id=\"erros\">" + 
+                "Atenção!! Nota inválida. Avalie entre 0 e 10.</div>\n");
+            }
+            else {
+                String div = "                <td><div id=\"box\">\n"
+                            + "                    <h1><font color=\"#077F09\">" + nota_anime + "</font></h1>\n";
+                File.addDiv(div);
+            }
+        }
+        return super.visitCmdAddNota(ctx);
+        }
+
+    @Override
+    public Void visitCmdAddStatus(malParser.CmdAddStatusContext ctx) {
+
+        String nome_anime = ctx.cmdAddNome().nome_anime.getText();
+
+        if (!(tabela.existe(nome_anime))) {
+            File.AddString("                    <div id=\"erros\">" + 
+                "Atenção!! O Anime " + nome_anime + " não existe.</div>\n");
+        }
+        else {
+            String status = ctx.cmdAddStatus().getText();
+
+        }
+        return super.visitCmdAddStatus(ctx);
+    }
+
+    @Override
+    public Void visitCmdAddEps(malParser.CmdAddEpsContext ctx) {
+
+        String nome_anime = ctx.cmdAddNome().nome_anime.getText();
+        int eps_anime = ctx.cmdAddEps().status_anime.getText();
+        String status_anime = ctx.cmdAddStatus().status_anime.getText();
+
+        if (!(tabela.existe(nome_anime))) {
+            File.AddString("                    <div id=\"erros\">" + 
+                "Atenção!! O Anime " + nome_anime + " não existe.</div>\n");
+        }
+        else {
+            //TODO
+        }
+        return super.visitCmdAddEps(ctx);
+    }
+
+    @Override
+    public Void visitCmdAddComentario(malParser.CmdAddComentarioContext ctx) {
+
+        String nome_anime = ctx.cmdAddNome().nome_anime.getText();
+        String comentario_anime = ctx.cmdAddComentario().comentario_anime_anime.getText();
+
+        if (!(tabela.existe(nome_anime))) {
+            File.AddString("                    <div id=\"erros\">" + 
+                "Atenção!! O Anime " + nome_anime + " não existe.</div>\n");
+        }
+        else {
+            String div = "                <td><div id=\"box\">\n"
+                        + "                    <h1><font color=\"#077F09\">" + comentario_anime + "</font></h1>\n";
+            File.addDiv(div);
+        }
+        return super.visitCmdAddComentario(ctx);
     }
 }
