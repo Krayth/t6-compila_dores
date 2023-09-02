@@ -1,7 +1,3 @@
-<<<<<<< Updated upstream
-# t6-compila-dores
- 
-=======
 # Trabalho 6 - Compiladores
 
 ## Alunos e RAs
@@ -73,6 +69,3 @@ Instalar JDK 11.0.18 de alguma fonte.
 ## Execução do programa
 
 TODO
-
- 
->>>>>>> Stashed changes
