@@ -32,12 +32,11 @@ public class App {
             parser.addErrorListener(mcel);
             
             ProgramContext arvore = parser.program();
-            Semantico as = new Semantico();
-            as.visitProgram(arvore);
+            // Semantico as = new Semantico();
+            // as.visitProgram(arvore);
 
-            parser.program();
+            // parser.program();
 
-            // Arquivo.gravaArquivo();
             File.gravaArquivo();
         } catch (IOException error) {
             error.printStackTrace();

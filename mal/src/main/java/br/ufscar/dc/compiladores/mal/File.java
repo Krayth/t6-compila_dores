@@ -12,7 +12,8 @@ public class File {
     public static String pf; // variavel para guardar o caminho do arquivo
     
     // Lista que separa cada div pelo personagem correto
-    public static List<String> divCharacter = new ArrayList<String>();
+    public static List<String> divAnime = new ArrayList<String>();
+    public static List<String> divAvaliacao = new ArrayList<String>();
 
     public static void AddString(String str) {
         sb.append(str).append("\n");
@@ -23,16 +24,16 @@ public class File {
     }
 
     // Geracao de codigo
-    // A classe criaArquivo cria a parte inicial do codigo html juntamento com o estilo
+    // A funcao criaArquivo cria o escopo do codigo html junto com o estilo CSS
     public static void criaArquivo(String caminho) {
         pf = caminho;
         sb.append("<html>\n" +
                 "    <head>\n" +
                 "        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n" +
-                "        <title>RPG Maker</title>\n" +
+                "        <title>Catálogo de animes com avaliações</title>\n" +
                 "        <style type=\"text/css\">\n" +
                 "            body {\n" +
-                "                background-image: url('https://i.imgur.com/G5BuFTV.png');\n" +
+                "                background-image: url('https://i.imgur.com/ClPBeje.jpeg');\n" +
                 "            }\n" +                                
                 "            h1 {\n" +
                 "                text-align: center;\n" +
@@ -48,16 +49,16 @@ public class File {
                 "                min-height: 400px;\n" +
                 "                max-height: 1000px;\n" +
                 "                border-style: solid;\n" +
-                "                border-color: #A0522D;\n" +
+                "                border-color: #350A58;\n" +
                 "                border-width: thin;\n" +
                 "                border-radius: 10px;\n" +
                 "                margin: 10px;\n" +
                 "                padding: 10px;\n" +
                 "                text-align: center;\n" +
-                "                color: #CD853F;\n" +
+                "                color: #6A60E9;\n" +
                 "                font-family: sans-serif;\n" +
                 "                font-weight: bold;\n" +
-                "                background-color: #F5F5DC;\n" +
+                "                background-color: #EFDCF5;\n" +
                 "            }\n" +
                 "\n" +
                 "            #erros {\n" +
@@ -105,25 +106,42 @@ public class File {
                 "            <tr>\n");
     }
     
-    // Criacao da div do personagem
-    public static void addDiv(String info) {
-        divCharacter.add(info);
+    // Criacao da div do anime
+    public static void addDivAnime(String info) {
+        divAnime.add(info);
+    }
+
+    public static void addDivAvaliacao(String info) {
+        divAvaliacao.add(info);
     }
         
     // Concatena div de um personagem
-    public static void appendDiv(int codigo, String infoNova) {
-        String infoAnterior = divCharacter.get(codigo);
+    public static void appendDivAnime(int codigo_anime, String infoNova) {
+        String infoAnterior = divAnime.get(codigo_anime);
         String infoConcat = infoAnterior.concat(infoNova);
-        divCharacter.set(codigo, infoConcat);
+        
+        divAnime.set(codigo_anime, infoConcat);
+    }
+
+    public static void appendDivAvaliacao(int codigo_avaliacoes, String infoNova) {
+        String infoAnterior = divAvaliacao.get(codigo_avaliacoes);
+        String infoConcat = infoAnterior.concat(infoNova);
+
+        divAvaliacao.set(codigo_avaliacoes, infoConcat);
     }
 
     // Grava todas as info concatenadas no arquivo de saida
     public static void gravaArquivo() {
-        for(int i = 0; i < divCharacter.size(); i++) {
-            appendDiv(i, "                </td></div>\n\n");
-            sb.append(divCharacter.get(i));
+        for(int i = 0; i < divAnime.size(); i++) {
+            appendDivAnime(i, "                </td></div>\n\n");
+            sb.append(divAnime.get(i));
         }
         
+        for(int i = 0; i < divAvaliacao.size(); i++) {
+            appendDivAvaliacao(i, "                </td></div>\n\n");
+            sb.append(divAvaliacao.get(i));
+        }
+
         sb.append("            </tr>\n" +
                 "        </table>\n" +
                 "    </body>\n" +

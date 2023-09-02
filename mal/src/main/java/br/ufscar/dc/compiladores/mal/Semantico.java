@@ -1,7 +1,5 @@
 package br.ufscar.dc.compiladores.mal;
 
-import java.io.File;
-
 import br.ufscar.dc.compiladores.mal.TabelaDeSimbolos.Tipo_anime;
 
 public class Semantico extends malBaseVisitor<Void>{
@@ -36,7 +34,7 @@ public class Semantico extends malBaseVisitor<Void>{
                         + "                    <font color=\"#2D7F2F\">Quantidade de Episódios: " + total_eps + "</font><p><p><p>\n"     
                         + "                    <font color=\"#2D7F2F\">Gênero: " + genero + "</font><p><p><p>\n"
                         + "                    <font color=\"#2D7F2F\">Público Alvo: " + publico_alvo + "</font><p><p><p>\n";
-                File.addDiv(div);
+                File.addDivAnime(div);
                 num_animes++;
         }
         return super.visitDeclare_anime(ctx);
@@ -55,7 +53,7 @@ public class Semantico extends malBaseVisitor<Void>{
 
             String div = "                <td><div id=\"box\">\n"
                         + "                    <h1><font color=\"#077F09\">" + nome_anime + "</font></h1>\n";
-            File.addDiv(div);
+            File.addDivAvaliacao(div);
             num_avaliacoes++;
 
         }
@@ -66,7 +64,7 @@ public class Semantico extends malBaseVisitor<Void>{
     public Void visitCmdAddNota(malParser.CmdAddNotaContext ctx) {
 
         String nome_anime = ctx.cmdAddNome().nome_anime.getText();
-        int nota_anime = ctx.cmdAddNota().nota_anime.getText();
+        int nota_anime = ctx.nota().getAltNumber();
 
         if (!(tabela.existe(nome_anime))) {
             File.AddString("                    <div id=\"erros\">" + 
@@ -80,7 +78,7 @@ public class Semantico extends malBaseVisitor<Void>{
             else {
                 String div = "                <td><div id=\"box\">\n"
                             + "                    <h1><font color=\"#077F09\">" + nota_anime + "</font></h1>\n";
-                File.addDiv(div);
+                File.addDivAvaliacao(div);
             }
         }
         return super.visitCmdAddNota(ctx);
@@ -132,7 +130,7 @@ public class Semantico extends malBaseVisitor<Void>{
         else {
             String div = "                <td><div id=\"box\">\n"
                         + "                    <h1><font color=\"#077F09\">" + comentario_anime + "</font></h1>\n";
-            File.addDiv(div);
+            File.addDivAvaliacao(div);
         }
         return super.visitCmdAddComentario(ctx);
     }

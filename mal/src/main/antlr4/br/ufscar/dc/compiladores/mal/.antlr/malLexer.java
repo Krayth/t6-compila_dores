@@ -1,4 +1,7 @@
-import br.ufscar.dc.compiladores.mal.File;
+// Generated from c:\Users\fehie\OneDrive\Área de Trabalho\Faculdade\Compiladores\t3\t4-compila-dores\t6-compila_dores\mal\src\main\antlr4\br\u005Cufscar\dc\compiladores\mal\mal.g4 by ANTLR 4.9.2
+
+  import br.ufscar.dc.compiladores.mal.File;
+
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
