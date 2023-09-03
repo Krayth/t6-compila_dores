@@ -31,9 +31,9 @@ public class App {
             parser.removeErrorListeners();
             parser.addErrorListener(mcel);
             
-            // ProgramContext arvore = parser.program();
-            // Semantico as = new Semantico();
-            // as.visitProgram(arvore);
+            ProgramContext arvore = parser.program();
+            Semantico as = new Semantico();
+            as.visitProgram(arvore);
 
             parser.program();
 
