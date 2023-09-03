@@ -28,17 +28,16 @@ public class malParser extends Parser {
 		ErroAddComentario=46, ANY=47;
 	public static final int
 		RULE_delimitador = 0, RULE_nota = 1, RULE_qtdEps = 2, RULE_tipo_anime = 3, 
-		RULE_genero = 4, RULE_publico_alvo = 5, RULE_statusCompleto = 6, RULE_statusAssistindo = 7, 
-		RULE_statusAbandonado = 8, RULE_nome_anime = 9, RULE_declare_nome = 10, 
-		RULE_program = 11, RULE_corpo = 12, RULE_declare_anime = 13, RULE_total_eps = 14, 
-		RULE_declare_avaliacao = 15, RULE_cmdAddNome = 16, RULE_cmdAddNota = 17, 
-		RULE_cmdAddStatus = 18, RULE_cmdAddEps = 19, RULE_cmdAddComentario = 20;
+		RULE_genero = 4, RULE_publico_alvo = 5, RULE_nome_anime = 6, RULE_declare_nome = 7, 
+		RULE_program = 8, RULE_corpo = 9, RULE_declare_anime = 10, RULE_total_eps = 11, 
+		RULE_declare_avaliacao = 12, RULE_cmdAddNome = 13, RULE_cmdAddNota = 14, 
+		RULE_cmdAddStatus = 15, RULE_cmdAddEps = 16, RULE_cmdAddComentario = 17;
 	private static String[] makeRuleNames() {
 		return new String[] {
 			"delimitador", "nota", "qtdEps", "tipo_anime", "genero", "publico_alvo", 
-			"statusCompleto", "statusAssistindo", "statusAbandonado", "nome_anime", 
-			"declare_nome", "program", "corpo", "declare_anime", "total_eps", "declare_avaliacao", 
-			"cmdAddNome", "cmdAddNota", "cmdAddStatus", "cmdAddEps", "cmdAddComentario"
+			"nome_anime", "declare_nome", "program", "corpo", "declare_anime", "total_eps", 
+			"declare_avaliacao", "cmdAddNome", "cmdAddNota", "cmdAddStatus", "cmdAddEps", 
+			"cmdAddComentario"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
@@ -48,11 +47,11 @@ public class malParser extends Parser {
 			null, "':'", "'TV'", "'Filme'", "'OVA'", "'Especial'", "'Acao'", "'Aventura'", 
 			"'Drama'", "'Comedia'", "'Terror'", "'Fantasia'", "'Scifi'", "'Romance'", 
 			"'Misterio'", "'SliceOfLife'", "'Sobrenatural'", "'Suspense'", "'Musical'", 
-			"'Esporte'", "'Shounen'", "'Seinen'", "'Shoujo'", "'R18'", "'Completo'", 
-			"'Assistindo'", "'Abandonado'", "'inicio'", "'Nome'", "'Tipo'", "'Genero'", 
-			"'Quantidade_Eps'", "'Publico_Alvo'", "'fim'", "'comeco_avaliacao'", 
-			"'Nota'", "'Status'", "'fim_avaliacao'", "'\n'", "'\r'", "'}'", null, 
-			null, null, null, "'['", "'{'"
+			"'Esporte'", "'Shounen'", "'Seinen'", "'Shoujo'", "'R18'", "'inicio'", 
+			"'Nome'", "'Tipo'", "'Genero'", "'Quantidade_Eps'", "'Publico_Alvo'", 
+			"'fim'", "'comeco_avaliacao'", "'Nota'", "'Status'", "'fim_avaliacao'", 
+			"'Completo'", "'Assistindo'", "'Abandonado'", "'\n'", "'\r'", "'}'", 
+			null, null, null, null, "'['", "'{'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
@@ -129,7 +128,7 @@ public class malParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(42);
+			setState(36);
 			match(T__0);
 			}
 		}
@@ -158,7 +157,7 @@ public class malParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(44);
+			setState(38);
 			match(NUM);
 			}
 		}
@@ -187,7 +186,7 @@ public class malParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(46);
+			setState(40);
 			match(NUM);
 			}
 		}
@@ -216,7 +215,7 @@ public class malParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(48);
+			setState(42);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__2) | (1L << T__3) | (1L << T__4))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -253,7 +252,7 @@ public class malParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(50);
+			setState(44);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__6) | (1L << T__7) | (1L << T__8) | (1L << T__9) | (1L << T__10) | (1L << T__11) | (1L << T__12) | (1L << T__13) | (1L << T__14) | (1L << T__15) | (1L << T__16) | (1L << T__17) | (1L << T__18))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -290,7 +289,7 @@ public class malParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(52);
+			setState(46);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__19) | (1L << T__20) | (1L << T__21) | (1L << T__22))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -300,90 +299,6 @@ public class malParser extends Parser {
 				_errHandler.reportMatch(this);
 				consume();
 			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class StatusCompletoContext extends ParserRuleContext {
-		public StatusCompletoContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_statusCompleto; }
-	}
-
-	public final StatusCompletoContext statusCompleto() throws RecognitionException {
-		StatusCompletoContext _localctx = new StatusCompletoContext(_ctx, getState());
-		enterRule(_localctx, 12, RULE_statusCompleto);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(54);
-			match(T__23);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class StatusAssistindoContext extends ParserRuleContext {
-		public StatusAssistindoContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_statusAssistindo; }
-	}
-
-	public final StatusAssistindoContext statusAssistindo() throws RecognitionException {
-		StatusAssistindoContext _localctx = new StatusAssistindoContext(_ctx, getState());
-		enterRule(_localctx, 14, RULE_statusAssistindo);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(56);
-			match(T__24);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class StatusAbandonadoContext extends ParserRuleContext {
-		public StatusAbandonadoContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_statusAbandonado; }
-	}
-
-	public final StatusAbandonadoContext statusAbandonado() throws RecognitionException {
-		StatusAbandonadoContext _localctx = new StatusAbandonadoContext(_ctx, getState());
-		enterRule(_localctx, 16, RULE_statusAbandonado);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(58);
-			match(T__25);
 			}
 		}
 		catch (RecognitionException re) {
@@ -407,11 +322,11 @@ public class malParser extends Parser {
 
 	public final Nome_animeContext nome_anime() throws RecognitionException {
 		Nome_animeContext _localctx = new Nome_animeContext(_ctx, getState());
-		enterRule(_localctx, 18, RULE_nome_anime);
+		enterRule(_localctx, 12, RULE_nome_anime);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(60);
+			setState(48);
 			match(NOME);
 			}
 		}
@@ -438,11 +353,11 @@ public class malParser extends Parser {
 
 	public final Declare_nomeContext declare_nome() throws RecognitionException {
 		Declare_nomeContext _localctx = new Declare_nomeContext(_ctx, getState());
-		enterRule(_localctx, 20, RULE_declare_nome);
+		enterRule(_localctx, 14, RULE_declare_nome);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(62);
+			setState(50);
 			nome_anime();
 			}
 		}
@@ -469,11 +384,11 @@ public class malParser extends Parser {
 
 	public final ProgramContext program() throws RecognitionException {
 		ProgramContext _localctx = new ProgramContext(_ctx, getState());
-		enterRule(_localctx, 22, RULE_program);
+		enterRule(_localctx, 16, RULE_program);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(64);
+			setState(52);
 			corpo();
 			}
 		}
@@ -509,36 +424,36 @@ public class malParser extends Parser {
 
 	public final CorpoContext corpo() throws RecognitionException {
 		CorpoContext _localctx = new CorpoContext(_ctx, getState());
-		enterRule(_localctx, 24, RULE_corpo);
+		enterRule(_localctx, 18, RULE_corpo);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(67); 
+			setState(55); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(66);
+				setState(54);
 				declare_anime();
 				}
 				}
-				setState(69); 
+				setState(57); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( _la==T__26 );
-			setState(74);
+			} while ( _la==T__23 );
+			setState(62);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==T__33) {
+			while (_la==T__30) {
 				{
 				{
-				setState(71);
+				setState(59);
 				declare_avaliacao();
 				}
 				}
-				setState(76);
+				setState(64);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -579,44 +494,44 @@ public class malParser extends Parser {
 
 	public final Declare_animeContext declare_anime() throws RecognitionException {
 		Declare_animeContext _localctx = new Declare_animeContext(_ctx, getState());
-		enterRule(_localctx, 26, RULE_declare_anime);
+		enterRule(_localctx, 20, RULE_declare_anime);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(77);
+			setState(65);
+			match(T__23);
+			setState(66);
+			match(T__24);
+			setState(67);
+			match(T__0);
+			setState(68);
+			declare_nome();
+			setState(69);
+			match(T__25);
+			setState(70);
+			match(T__0);
+			setState(71);
+			tipo_anime();
+			setState(72);
 			match(T__26);
-			setState(78);
+			setState(73);
+			match(T__0);
+			setState(74);
+			genero();
+			setState(75);
 			match(T__27);
+			setState(76);
+			match(T__0);
+			setState(77);
+			total_eps();
+			setState(78);
+			match(T__28);
 			setState(79);
 			match(T__0);
 			setState(80);
-			declare_nome();
-			setState(81);
-			match(T__28);
-			setState(82);
-			match(T__0);
-			setState(83);
-			tipo_anime();
-			setState(84);
-			match(T__29);
-			setState(85);
-			match(T__0);
-			setState(86);
-			genero();
-			setState(87);
-			match(T__30);
-			setState(88);
-			match(T__0);
-			setState(89);
-			total_eps();
-			setState(90);
-			match(T__31);
-			setState(91);
-			match(T__0);
-			setState(92);
 			publico_alvo();
-			setState(93);
-			match(T__32);
+			setState(81);
+			match(T__29);
 			}
 		}
 		catch (RecognitionException re) {
@@ -642,11 +557,11 @@ public class malParser extends Parser {
 
 	public final Total_epsContext total_eps() throws RecognitionException {
 		Total_epsContext _localctx = new Total_epsContext(_ctx, getState());
-		enterRule(_localctx, 28, RULE_total_eps);
+		enterRule(_localctx, 22, RULE_total_eps);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(95);
+			setState(83);
 			qtdEps();
 			}
 		}
@@ -685,53 +600,53 @@ public class malParser extends Parser {
 
 	public final Declare_avaliacaoContext declare_avaliacao() throws RecognitionException {
 		Declare_avaliacaoContext _localctx = new Declare_avaliacaoContext(_ctx, getState());
-		enterRule(_localctx, 30, RULE_declare_avaliacao);
+		enterRule(_localctx, 24, RULE_declare_avaliacao);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(97);
-			match(T__33);
-			setState(98);
-			match(T__27);
-			setState(99);
+			setState(85);
+			match(T__30);
+			setState(86);
+			match(T__24);
+			setState(87);
 			match(T__0);
-			setState(100);
+			setState(88);
 			cmdAddNome();
-			setState(101);
-			match(T__34);
-			setState(102);
+			setState(89);
+			match(T__31);
+			setState(90);
 			match(T__0);
-			setState(103);
+			setState(91);
 			cmdAddNota();
-			setState(104);
-			match(T__35);
-			setState(105);
+			setState(92);
+			match(T__32);
+			setState(93);
 			match(T__0);
-			setState(106);
+			setState(94);
 			cmdAddStatus();
-			setState(108);
+			setState(96);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==NUM) {
 				{
-				setState(107);
+				setState(95);
 				cmdAddEps();
 				}
 			}
 
-			setState(111);
+			setState(99);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==ErroAddComentario) {
 				{
-				setState(110);
+				setState(98);
 				cmdAddComentario();
 				}
 			}
 
-			setState(113);
-			match(T__36);
+			setState(101);
+			match(T__33);
 			}
 		}
 		catch (RecognitionException re) {
@@ -757,11 +672,11 @@ public class malParser extends Parser {
 
 	public final CmdAddNomeContext cmdAddNome() throws RecognitionException {
 		CmdAddNomeContext _localctx = new CmdAddNomeContext(_ctx, getState());
-		enterRule(_localctx, 32, RULE_cmdAddNome);
+		enterRule(_localctx, 26, RULE_cmdAddNome);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(115);
+			setState(103);
 			nome_anime();
 			}
 		}
@@ -788,11 +703,11 @@ public class malParser extends Parser {
 
 	public final CmdAddNotaContext cmdAddNota() throws RecognitionException {
 		CmdAddNotaContext _localctx = new CmdAddNotaContext(_ctx, getState());
-		enterRule(_localctx, 34, RULE_cmdAddNota);
+		enterRule(_localctx, 28, RULE_cmdAddNota);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(117);
+			setState(105);
 			nota();
 			}
 		}
@@ -808,15 +723,6 @@ public class malParser extends Parser {
 	}
 
 	public static class CmdAddStatusContext extends ParserRuleContext {
-		public StatusCompletoContext statusCompleto() {
-			return getRuleContext(StatusCompletoContext.class,0);
-		}
-		public StatusAssistindoContext statusAssistindo() {
-			return getRuleContext(StatusAssistindoContext.class,0);
-		}
-		public StatusAbandonadoContext statusAbandonado() {
-			return getRuleContext(StatusAbandonadoContext.class,0);
-		}
 		public CmdAddStatusContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -825,34 +731,21 @@ public class malParser extends Parser {
 
 	public final CmdAddStatusContext cmdAddStatus() throws RecognitionException {
 		CmdAddStatusContext _localctx = new CmdAddStatusContext(_ctx, getState());
-		enterRule(_localctx, 36, RULE_cmdAddStatus);
+		enterRule(_localctx, 30, RULE_cmdAddStatus);
+		int _la;
 		try {
-			setState(122);
-			_errHandler.sync(this);
-			switch (_input.LA(1)) {
-			case T__23:
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(119);
-				statusCompleto();
-				}
-				break;
-			case T__24:
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(120);
-				statusAssistindo();
-				}
-				break;
-			case T__25:
-				enterOuterAlt(_localctx, 3);
-				{
-				setState(121);
-				statusAbandonado();
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(107);
+			_la = _input.LA(1);
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__34) | (1L << T__35) | (1L << T__36))) != 0)) ) {
+			_errHandler.recoverInline(this);
+			}
+			else {
+				if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+				_errHandler.reportMatch(this);
+				consume();
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -878,11 +771,11 @@ public class malParser extends Parser {
 
 	public final CmdAddEpsContext cmdAddEps() throws RecognitionException {
 		CmdAddEpsContext _localctx = new CmdAddEpsContext(_ctx, getState());
-		enterRule(_localctx, 38, RULE_cmdAddEps);
+		enterRule(_localctx, 32, RULE_cmdAddEps);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(124);
+			setState(109);
 			qtdEps();
 			}
 		}
@@ -910,20 +803,20 @@ public class malParser extends Parser {
 
 	public final CmdAddComentarioContext cmdAddComentario() throws RecognitionException {
 		CmdAddComentarioContext _localctx = new CmdAddComentarioContext(_ctx, getState());
-		enterRule(_localctx, 40, RULE_cmdAddComentario);
+		enterRule(_localctx, 34, RULE_cmdAddComentario);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(126);
+			setState(111);
 			match(ErroAddComentario);
-			setState(130);
+			setState(115);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2) | (1L << T__3) | (1L << T__4) | (1L << T__5) | (1L << T__6) | (1L << T__7) | (1L << T__8) | (1L << T__9) | (1L << T__10) | (1L << T__11) | (1L << T__12) | (1L << T__13) | (1L << T__14) | (1L << T__15) | (1L << T__16) | (1L << T__17) | (1L << T__18) | (1L << T__19) | (1L << T__20) | (1L << T__21) | (1L << T__22) | (1L << T__23) | (1L << T__24) | (1L << T__25) | (1L << T__26) | (1L << T__27) | (1L << T__28) | (1L << T__29) | (1L << T__30) | (1L << T__31) | (1L << T__32) | (1L << T__33) | (1L << T__34) | (1L << T__35) | (1L << T__36) | (1L << Comentario) | (1L << WhiteSpace) | (1L << NUM) | (1L << NOME) | (1L << ErroComentarioCodigo) | (1L << ANY))) != 0)) {
 				{
 				{
-				setState(127);
+				setState(112);
 				_la = _input.LA(1);
 				if ( _la <= 0 || ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__37) | (1L << T__38) | (1L << T__39) | (1L << ErroAddComentario))) != 0)) ) {
 				_errHandler.recoverInline(this);
@@ -935,11 +828,11 @@ public class malParser extends Parser {
 				}
 				}
 				}
-				setState(132);
+				setState(117);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(133);
+			setState(118);
 			match(T__39);
 			}
 		}
@@ -955,39 +848,34 @@ public class malParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\61\u008a\4\2\t\2"+
-		"\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13"+
-		"\t\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
-		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\3\2\3\2\3\3\3\3\3\4\3\4\3\5\3"+
-		"\5\3\6\3\6\3\7\3\7\3\b\3\b\3\t\3\t\3\n\3\n\3\13\3\13\3\f\3\f\3\r\3\r\3"+
-		"\16\6\16F\n\16\r\16\16\16G\3\16\7\16K\n\16\f\16\16\16N\13\16\3\17\3\17"+
-		"\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17"+
-		"\3\17\3\17\3\20\3\20\3\21\3\21\3\21\3\21\3\21\3\21\3\21\3\21\3\21\3\21"+
-		"\3\21\5\21o\n\21\3\21\5\21r\n\21\3\21\3\21\3\22\3\22\3\23\3\23\3\24\3"+
-		"\24\3\24\5\24}\n\24\3\25\3\25\3\26\3\26\7\26\u0083\n\26\f\26\16\26\u0086"+
-		"\13\26\3\26\3\26\3\26\2\2\27\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \""+
-		"$&(*\2\6\3\2\4\7\3\2\b\25\3\2\26\31\4\2(*\60\60\2{\2,\3\2\2\2\4.\3\2\2"+
-		"\2\6\60\3\2\2\2\b\62\3\2\2\2\n\64\3\2\2\2\f\66\3\2\2\2\168\3\2\2\2\20"+
-		":\3\2\2\2\22<\3\2\2\2\24>\3\2\2\2\26@\3\2\2\2\30B\3\2\2\2\32E\3\2\2\2"+
-		"\34O\3\2\2\2\36a\3\2\2\2 c\3\2\2\2\"u\3\2\2\2$w\3\2\2\2&|\3\2\2\2(~\3"+
-		"\2\2\2*\u0080\3\2\2\2,-\7\3\2\2-\3\3\2\2\2./\7-\2\2/\5\3\2\2\2\60\61\7"+
-		"-\2\2\61\7\3\2\2\2\62\63\t\2\2\2\63\t\3\2\2\2\64\65\t\3\2\2\65\13\3\2"+
-		"\2\2\66\67\t\4\2\2\67\r\3\2\2\289\7\32\2\29\17\3\2\2\2:;\7\33\2\2;\21"+
-		"\3\2\2\2<=\7\34\2\2=\23\3\2\2\2>?\7.\2\2?\25\3\2\2\2@A\5\24\13\2A\27\3"+
-		"\2\2\2BC\5\32\16\2C\31\3\2\2\2DF\5\34\17\2ED\3\2\2\2FG\3\2\2\2GE\3\2\2"+
-		"\2GH\3\2\2\2HL\3\2\2\2IK\5 \21\2JI\3\2\2\2KN\3\2\2\2LJ\3\2\2\2LM\3\2\2"+
-		"\2M\33\3\2\2\2NL\3\2\2\2OP\7\35\2\2PQ\7\36\2\2QR\7\3\2\2RS\5\26\f\2ST"+
-		"\7\37\2\2TU\7\3\2\2UV\5\b\5\2VW\7 \2\2WX\7\3\2\2XY\5\n\6\2YZ\7!\2\2Z["+
-		"\7\3\2\2[\\\5\36\20\2\\]\7\"\2\2]^\7\3\2\2^_\5\f\7\2_`\7#\2\2`\35\3\2"+
-		"\2\2ab\5\6\4\2b\37\3\2\2\2cd\7$\2\2de\7\36\2\2ef\7\3\2\2fg\5\"\22\2gh"+
-		"\7%\2\2hi\7\3\2\2ij\5$\23\2jk\7&\2\2kl\7\3\2\2ln\5&\24\2mo\5(\25\2nm\3"+
-		"\2\2\2no\3\2\2\2oq\3\2\2\2pr\5*\26\2qp\3\2\2\2qr\3\2\2\2rs\3\2\2\2st\7"+
-		"\'\2\2t!\3\2\2\2uv\5\24\13\2v#\3\2\2\2wx\5\4\3\2x%\3\2\2\2y}\5\16\b\2"+
-		"z}\5\20\t\2{}\5\22\n\2|y\3\2\2\2|z\3\2\2\2|{\3\2\2\2}\'\3\2\2\2~\177\5"+
-		"\6\4\2\177)\3\2\2\2\u0080\u0084\7\60\2\2\u0081\u0083\n\5\2\2\u0082\u0081"+
-		"\3\2\2\2\u0083\u0086\3\2\2\2\u0084\u0082\3\2\2\2\u0084\u0085\3\2\2\2\u0085"+
-		"\u0087\3\2\2\2\u0086\u0084\3\2\2\2\u0087\u0088\7*\2\2\u0088+\3\2\2\2\b"+
-		"GLnq|\u0084";
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\61{\4\2\t\2\4\3\t"+
+		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4"+
+		"\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22\4\23"+
+		"\t\23\3\2\3\2\3\3\3\3\3\4\3\4\3\5\3\5\3\6\3\6\3\7\3\7\3\b\3\b\3\t\3\t"+
+		"\3\n\3\n\3\13\6\13:\n\13\r\13\16\13;\3\13\7\13?\n\13\f\13\16\13B\13\13"+
+		"\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3"+
+		"\f\3\r\3\r\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16\5\16"+
+		"c\n\16\3\16\5\16f\n\16\3\16\3\16\3\17\3\17\3\20\3\20\3\21\3\21\3\22\3"+
+		"\22\3\23\3\23\7\23t\n\23\f\23\16\23w\13\23\3\23\3\23\3\23\2\2\24\2\4\6"+
+		"\b\n\f\16\20\22\24\26\30\32\34\36 \"$\2\7\3\2\4\7\3\2\b\25\3\2\26\31\3"+
+		"\2%\'\4\2(*\60\60\2m\2&\3\2\2\2\4(\3\2\2\2\6*\3\2\2\2\b,\3\2\2\2\n.\3"+
+		"\2\2\2\f\60\3\2\2\2\16\62\3\2\2\2\20\64\3\2\2\2\22\66\3\2\2\2\249\3\2"+
+		"\2\2\26C\3\2\2\2\30U\3\2\2\2\32W\3\2\2\2\34i\3\2\2\2\36k\3\2\2\2 m\3\2"+
+		"\2\2\"o\3\2\2\2$q\3\2\2\2&\'\7\3\2\2\'\3\3\2\2\2()\7-\2\2)\5\3\2\2\2*"+
+		"+\7-\2\2+\7\3\2\2\2,-\t\2\2\2-\t\3\2\2\2./\t\3\2\2/\13\3\2\2\2\60\61\t"+
+		"\4\2\2\61\r\3\2\2\2\62\63\7.\2\2\63\17\3\2\2\2\64\65\5\16\b\2\65\21\3"+
+		"\2\2\2\66\67\5\24\13\2\67\23\3\2\2\28:\5\26\f\298\3\2\2\2:;\3\2\2\2;9"+
+		"\3\2\2\2;<\3\2\2\2<@\3\2\2\2=?\5\32\16\2>=\3\2\2\2?B\3\2\2\2@>\3\2\2\2"+
+		"@A\3\2\2\2A\25\3\2\2\2B@\3\2\2\2CD\7\32\2\2DE\7\33\2\2EF\7\3\2\2FG\5\20"+
+		"\t\2GH\7\34\2\2HI\7\3\2\2IJ\5\b\5\2JK\7\35\2\2KL\7\3\2\2LM\5\n\6\2MN\7"+
+		"\36\2\2NO\7\3\2\2OP\5\30\r\2PQ\7\37\2\2QR\7\3\2\2RS\5\f\7\2ST\7 \2\2T"+
+		"\27\3\2\2\2UV\5\6\4\2V\31\3\2\2\2WX\7!\2\2XY\7\33\2\2YZ\7\3\2\2Z[\5\34"+
+		"\17\2[\\\7\"\2\2\\]\7\3\2\2]^\5\36\20\2^_\7#\2\2_`\7\3\2\2`b\5 \21\2a"+
+		"c\5\"\22\2ba\3\2\2\2bc\3\2\2\2ce\3\2\2\2df\5$\23\2ed\3\2\2\2ef\3\2\2\2"+
+		"fg\3\2\2\2gh\7$\2\2h\33\3\2\2\2ij\5\16\b\2j\35\3\2\2\2kl\5\4\3\2l\37\3"+
+		"\2\2\2mn\t\5\2\2n!\3\2\2\2op\5\6\4\2p#\3\2\2\2qu\7\60\2\2rt\n\6\2\2sr"+
+		"\3\2\2\2tw\3\2\2\2us\3\2\2\2uv\3\2\2\2vx\3\2\2\2wu\3\2\2\2xy\7*\2\2y%"+
+		"\3\2\2\2\7;@beu";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

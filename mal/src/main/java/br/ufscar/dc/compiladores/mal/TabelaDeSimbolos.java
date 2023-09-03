@@ -89,7 +89,7 @@ public class TabelaDeSimbolos {
         return tabela.get(nome).publico_alvo;
     }
 
-    /*public Status verificar_Status(String nome) {
+    public Status verificar_Status(String nome) {
         return tabela.get(nome).Status;
-    }*/
+    }
 }

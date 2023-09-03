@@ -6,35 +6,35 @@ import java.util.List;
 public class SemanticoUtils {
     public static List<String> errosSemanticos = new ArrayList<>();
 
-    public static TabelaDeSimbolos.Tipo_anime getTipo_anime(TabelaDeSimbolos tabela, String nomeVar) {
-        //TabelaDeSimbolos.Tipo_anime tipo_anime = TabelaDeSimbolos.Tipo_anime.INVALIDO ;
+    public static TabelaDeSimbolos.Tipo_anime verificarTipo_anime(TabelaDeSimbolos tabela, malParser.Declare_animeContext ctx) {
+        String tipo_anime = ctx.tipo_anime().getText();
 
-        switch (nomeVar) {
+        switch (tipo_anime) {
             case "TV":          return TabelaDeSimbolos.Tipo_anime.TV;
             case "Filme":       return TabelaDeSimbolos.Tipo_anime.FILME;
             case "OVA":         return TabelaDeSimbolos.Tipo_anime.OVA;
             case "Especial":    return TabelaDeSimbolos.Tipo_anime.ESPECIAL;                            
             default:
-                //File.AddString("                    <div id=\"erros\">" + 
-                    //"Erro: o Tipo de anime " + tipo_anime + " não existe!</div>\n");
+                File.AddString("                    <div id=\"erros\">" + 
+                    "Erro: o Tipo de anime " + tipo_anime + " não existe!</div>\n");
                 return TabelaDeSimbolos.Tipo_anime.INVALIDO;
         }
     }
 
-    public static TabelaDeSimbolos.Tipo_anime verificarTipo_anime(TabelaDeSimbolos tabela, String nomeVar) {
-        TabelaDeSimbolos.Tipo_anime tipo_anime = TabelaDeSimbolos.Tipo_anime.INVALIDO ;
-        
-        if(tabela.existe(nomeVar)) {
-            return tabela.verificar_Tipo_anime(nomeVar);
+    public static TabelaDeSimbolos.Tipo_anime verificarTipo_anime(TabelaDeSimbolos tabela, String nomeAnime) {
+
+        if(tabela.existe(nomeAnime)) {
+            return tabela.verificar_Tipo_anime(nomeAnime);
+        } else {
+            return TabelaDeSimbolos.Tipo_anime.INVALIDO;
         }
 
-        return tipo_anime;
     }
 
-    public static TabelaDeSimbolos.Genero getGenero_anime(TabelaDeSimbolos tabela, String nomeVar) {
-        //TabelaDeSimbolos.Genero genero = TabelaDeSimbolos.Genero.INVALIDO ;
+    public static TabelaDeSimbolos.Genero verificarGenero_anime(TabelaDeSimbolos tabela, malParser.Declare_animeContext ctx) {
+        String genero_anime = ctx.genero().getText();
 
-        switch (nomeVar) {
+        switch (genero_anime) {
             case "Acao":            return TabelaDeSimbolos.Genero.ACAO;
             case "Aventura":        return TabelaDeSimbolos.Genero.AVENTURA;
             case "Drama":           return TabelaDeSimbolos.Genero.DRAMA;
@@ -52,62 +52,70 @@ public class SemanticoUtils {
 
             
             default:
-                //File.AddString("                    <div id=\"erros\">" + 
-                    //"Erro: o Genero de anime " + genero + " não existe!</div>\n");
+                File.AddString("                    <div id=\"erros\">" + 
+                    "Erro: o Genero de anime " + genero_anime + " não existe!</div>\n");
                 return TabelaDeSimbolos.Genero.INVALIDO;
         }
     }
 
-    public static TabelaDeSimbolos.Genero verificarGenero(TabelaDeSimbolos tabela, String nomeVar) {
-        TabelaDeSimbolos.Genero genero = TabelaDeSimbolos.Genero.INVALIDO ;
-        
-        if(tabela.existe(nomeVar)) {
-            return tabela.verificar_Genero(nomeVar);
+    public static TabelaDeSimbolos.Genero verificarGenero(TabelaDeSimbolos tabela, String nomeAnime) {
+  
+        if(tabela.existe(nomeAnime)) {
+            return tabela.verificar_Genero(nomeAnime);
+        } else {
+            return TabelaDeSimbolos.Genero.INVALIDO ;
         }
-
-        return genero;
+ 
     }
 
-    public static TabelaDeSimbolos.Publico_alvo getPublico_alvo(TabelaDeSimbolos tabela, String nomeVar) {
-        //TabelaDeSimbolos.Publico_alvo publico_alvo = TabelaDeSimbolos.Publico_alvo.INVALIDO ;
+    public static TabelaDeSimbolos.Publico_alvo verificarPublico_alvo(TabelaDeSimbolos tabela, malParser.Declare_animeContext ctx) {;
+        String publico_alvo_anime = ctx.publico_alvo().getText();
 
-        switch (nomeVar) {
+        switch (publico_alvo_anime) {
             case "Shounen": return TabelaDeSimbolos.Publico_alvo.SHOUNEN;
             case "Seinen":  return TabelaDeSimbolos.Publico_alvo.SEINEN;
             case "Shoujo":  return TabelaDeSimbolos.Publico_alvo.SHOUJO;
             case "R18":     return TabelaDeSimbolos.Publico_alvo.R18;                                                    
 
             default:
-                //File.AddString("                    <div id=\"erros\">" + 
-                    //"Erro: o Publico Alvo de anime " + publico_alvo + " não existe!</div>\n");
+                File.AddString("                    <div id=\"erros\">" + 
+                    "Erro: o Publico Alvo de anime " + publico_alvo_anime + " não existe!</div>\n");
                 return TabelaDeSimbolos.Publico_alvo.INVALIDO;
         }
     }
 
-    public static TabelaDeSimbolos.Publico_alvo verificarPublico_alvo(TabelaDeSimbolos tabela, String nomeVar) {
-        TabelaDeSimbolos.Publico_alvo publico_alvo = TabelaDeSimbolos.Publico_alvo.INVALIDO ;
-        
-        if(tabela.existe(nomeVar)) {
-            return tabela.verificar_Publico_alvo(nomeVar);
+    public static TabelaDeSimbolos.Publico_alvo verificarPublico_alvo(TabelaDeSimbolos tabela, String nomeAnime) {
+    
+        if(tabela.existe(nomeAnime)) {
+            return tabela.verificar_Publico_alvo(nomeAnime);
+        } else {
+            return TabelaDeSimbolos.Publico_alvo.INVALIDO  ;
         }
 
-        return publico_alvo;
     }
 
-    public static TabelaDeSimbolos.Status getStatus(TabelaDeSimbolos tabela, String nomeVar) {
-        //TabelaDeSimbolos.Publico_alvo publico_alvo = TabelaDeSimbolos.Publico_alvo.INVALIDO ;
+    public static TabelaDeSimbolos.Status getStatus(TabelaDeSimbolos tabela, malParser.Declare_avaliacaoContext ctx) {
+        String status_anime = ctx.cmdAddStatus().getText();
 
-        switch (nomeVar) {
+        switch (status_anime) {
             case "Completo":   return TabelaDeSimbolos.Status.COMPLETO;
             case "Assistindo": return TabelaDeSimbolos.Status.ASSISTINDO;
             case "Abandonado": return TabelaDeSimbolos.Status.ABANDONADO;
 
             default:
-                //File.AddString("                    <div id=\"erros\">" + 
-                    //"Erro: o Publico Alvo de anime " + publico_alvo + " não existe!</div>\n");
+                File.AddString("                    <div id=\"erros\">" + 
+                    "Erro: o Publico Alvo de anime " + status_anime + " não existe!</div>\n");
                 return TabelaDeSimbolos.Status.INVALIDO;
         }
     }
 
+    // public static TabelaDeSimbolos.Status verificarStatusAnime(TabelaDeSimbolos tabela, String nomeAnime) {
+    
+    //     if(tabela.existe(nomeAnime)) {
+    //         return tabela.verificarStatusAnime(nomeAnime);
+    //     } else {
+    //         return TabelaDeSimbolos.Status.INVALIDO  ;
+    //     }
 
+    // }
 }

@@ -26,10 +26,6 @@ genero: 'Acao' | 'Aventura' | 'Drama' | 'Comedia' | 'Terror' |
 
 publico_alvo: 'Shounen' | 'Seinen' | 'Shoujo' | 'R18';
 
-statusCompleto: 'Completo';
-statusAssistindo: 'Assistindo';
-statusAbandonado: 'Abandonado';
-
 nome_anime: NOME;
 declare_nome: nome_anime;
 program: corpo; 
@@ -57,7 +53,7 @@ declare_avaliacao:
 
 cmdAddNome: nome_anime;
 cmdAddNota: nota;
-cmdAddStatus: statusCompleto | statusAssistindo | statusAbandonado;
+cmdAddStatus: 'Completo' | 'Assistindo' | 'Abandonado';
 cmdAddEps: qtdEps;
 cmdAddComentario:
     '{'
