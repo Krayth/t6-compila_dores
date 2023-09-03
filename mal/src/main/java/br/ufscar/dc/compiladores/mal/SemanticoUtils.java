@@ -94,20 +94,20 @@ public class SemanticoUtils {
 
     }
 
-    public static TabelaDeSimbolos.Status getStatus(TabelaDeSimbolos tabela, malParser.Declare_avaliacaoContext ctx) {
-        String status_anime = ctx.cmdAddStatus().getText();
+    // public static TabelaDeSimbolos.Status getStatus(TabelaDeSimbolos tabela, malParser.Declare_avaliacaoContext ctx) {
+    //     String status_anime = ctx.cmdAddStatus().getText();
 
-        switch (status_anime) {
-            case "Completo":   return TabelaDeSimbolos.Status.COMPLETO;
-            case "Assistindo": return TabelaDeSimbolos.Status.ASSISTINDO;
-            case "Abandonado": return TabelaDeSimbolos.Status.ABANDONADO;
+    //     switch (status_anime) {
+    //         case "Completo":   return TabelaDeSimbolos.Status.COMPLETO;
+    //         case "Assistindo": return TabelaDeSimbolos.Status.ASSISTINDO;
+    //         case "Abandonado": return TabelaDeSimbolos.Status.ABANDONADO;
 
-            default:
-                File.AddString("                    <div id=\"erros\">" + 
-                    "Erro: o Publico Alvo de anime " + status_anime + " não existe!</div>\n");
-                return TabelaDeSimbolos.Status.INVALIDO;
-        }
-    }
+    //         default:
+    //             File.AddString("                    <div id=\"erros\">" + 
+    //                 "Erro: o Publico Alvo de anime " + status_anime + " não existe!</div>\n");
+    //             return TabelaDeSimbolos.Status.INVALIDO;
+    //     }
+    // }
 
     // public static TabelaDeSimbolos.Status verificarStatusAnime(TabelaDeSimbolos tabela, String nomeAnime) {
     

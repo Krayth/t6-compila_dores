@@ -1,8 +1,5 @@
 // Generated from java-escape by ANTLR 4.11.1
 package br.ufscar.dc.compiladores.mal;
-
-  import br.ufscar.dc.compiladores.mal.File;
-
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -70,6 +67,36 @@ public interface malListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitPublico_alvo(malParser.Publico_alvoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link malParser#statusCompleto}.
+	 * @param ctx the parse tree
+	 */
+	void enterStatusCompleto(malParser.StatusCompletoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link malParser#statusCompleto}.
+	 * @param ctx the parse tree
+	 */
+	void exitStatusCompleto(malParser.StatusCompletoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link malParser#statusAssistindo}.
+	 * @param ctx the parse tree
+	 */
+	void enterStatusAssistindo(malParser.StatusAssistindoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link malParser#statusAssistindo}.
+	 * @param ctx the parse tree
+	 */
+	void exitStatusAssistindo(malParser.StatusAssistindoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link malParser#statusAbandonado}.
+	 * @param ctx the parse tree
+	 */
+	void enterStatusAbandonado(malParser.StatusAbandonadoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link malParser#statusAbandonado}.
+	 * @param ctx the parse tree
+	 */
+	void exitStatusAbandonado(malParser.StatusAbandonadoContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link malParser#nome_anime}.
 	 * @param ctx the parse tree

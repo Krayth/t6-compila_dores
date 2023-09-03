@@ -1,8 +1,5 @@
 // Generated from java-escape by ANTLR 4.11.1
 package br.ufscar.dc.compiladores.mal;
-
-  import br.ufscar.dc.compiladores.mal.File;
-
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -49,6 +46,24 @@ public interface malVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitPublico_alvo(malParser.Publico_alvoContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link malParser#statusCompleto}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitStatusCompleto(malParser.StatusCompletoContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link malParser#statusAssistindo}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitStatusAssistindo(malParser.StatusAssistindoContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link malParser#statusAbandonado}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitStatusAbandonado(malParser.StatusAbandonadoContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link malParser#nome_anime}.
 	 * @param ctx the parse tree

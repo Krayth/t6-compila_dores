@@ -13,11 +13,12 @@ public class MyCustomErrorListener extends BaseErrorListener {
 
         Token t = (Token) offendingSymbol;
         String erro = t.getText();
-
         // Condicao de parada para interromper o programa
         if(!erro.equals("<EOF>")) 
-            // Grava a mensagem de erro sintatico no arquivo
+            // Mostra mensagem de erro sintático e salva no arquivo de saída
             File.AddString("                    <div id=\"erros\">" + 
-                    "Erro sintático perto de: " + erro + "</div>\n");
+                    "Erro sintático próximo à " + erro + "</div>\n");
+
+        
     }
 }

@@ -29,27 +29,29 @@ public class TabelaDeSimbolos {
         INVALIDO   
     }
 
-    public enum Status {
-        COMPLETO,
-        ASSISTINDO,
-        ABANDONADO,
-        INVALIDO   
-    }
+    // public enum Status {
+    //     COMPLETO,
+    //     ASSISTINDO,
+    //     ABANDONADO,
+    //     INVALIDO   
+    // }
 
     class EntradaTabelaSimbolos {
         String nome_anime;
         Tipo_anime tipo_anime;
         Genero genero;
-        int total_eps;
+        String total_eps;
         Publico_alvo publico_alvo;
+        int codigo;
     
         private EntradaTabelaSimbolos(String nome_anime, Tipo_anime tipo_anime,
-            Genero genero, int total_eps, Publico_alvo publico_alvo) {
+            Genero genero, String total_eps, Publico_alvo publico_alvo, int codigo) {
                 this.nome_anime = nome_anime;
                 this.tipo_anime = tipo_anime;
                 this.genero = genero;
                 this.total_eps = total_eps;
                 this.publico_alvo = publico_alvo;
+                this.codigo = codigo;
         }
     }
 
@@ -59,12 +61,13 @@ public class TabelaDeSimbolos {
         this.tabela = new HashMap<>();
     }
 
-    public void adicionarAnime(String nome, Tipo_anime tipo_anime,
-        Genero genero, int total_eps, Publico_alvo publico_alvo) {
-
+    public void adicionarAnime(String nome_anime, Tipo_anime tipo_anime,
+            Genero genero, String total_eps, Publico_alvo publico_alvo, int codigo) {
+        
+        tabela.put(nome_anime, new EntradaTabelaSimbolos(nome_anime, tipo_anime, genero, total_eps, publico_alvo, codigo));
     }
 
-    public void adicionarAvaliacao(String nome, int nota, String status, int eps, 
+    public void adicionarAvaliacao(String nome, int nota, String status, String eps, 
         String comentario) {
 
     }
@@ -81,7 +84,7 @@ public class TabelaDeSimbolos {
         return tabela.get(nome).genero;
     }
 
-    public int verificar_Total_eps(String nome){
+    public String verificar_Total_eps(String nome){
         return tabela.get(nome).total_eps;
     }
 
@@ -89,7 +92,7 @@ public class TabelaDeSimbolos {
         return tabela.get(nome).publico_alvo;
     }
 
-    public Status verificar_Status(String nome) {
-        return tabela.get(nome).Status;
+    public int verificarCodigo(String nome) {
+        return tabela.get(nome).codigo;
     }
 }

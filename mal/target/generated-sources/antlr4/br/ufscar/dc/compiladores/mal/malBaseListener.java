@@ -1,9 +1,6 @@
 // Generated from java-escape by ANTLR 4.11.1
 package br.ufscar.dc.compiladores.mal;
 
-  import br.ufscar.dc.compiladores.mal.File;
-
-
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
@@ -87,6 +84,42 @@ public class malBaseListener implements malListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitPublico_alvo(malParser.Publico_alvoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterStatusCompleto(malParser.StatusCompletoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitStatusCompleto(malParser.StatusCompletoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterStatusAssistindo(malParser.StatusAssistindoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitStatusAssistindo(malParser.StatusAssistindoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterStatusAbandonado(malParser.StatusAbandonadoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitStatusAbandonado(malParser.StatusAbandonadoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

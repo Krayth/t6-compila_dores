@@ -7,7 +7,7 @@ import br.ufscar.dc.compiladores.mal.TabelaDeSimbolos.Tipo_anime;
 public class Semantico extends malBaseVisitor<Void>{
     
     TabelaDeSimbolos tabela;
-    int num_animes = 0;
+    int codigo_anime = 0;
     int num_avaliacoes = 0;
 
     @Override
@@ -119,22 +119,19 @@ public class Semantico extends malBaseVisitor<Void>{
             if (tabela.existe(nome_anime)) {
                 File.AddString("                    <div id=\"erros\">" + 
                     "Atenção!! O Anime " + nome_anime + " já existe.</div>\n");
-            }
-            else {
-                // String tipo_anime_string = ctx.tipo_anime().getText();
-                int total_eps = ctx.total_eps().getAltNumber();
-                // String genero_string = ctx.genero().getText();
-                // String publico_alvo_string = ctx.publico_alvo().getText();
-                tabela.adicionarAnime(nome_anime, tipo_anime, genero_anime, total_eps, publico_alvo_anime);
+            } else if(ctx.total_eps() != null){
+                String total_eps = ctx.total_eps().getText();
+                
+                tabela.adicionarAnime(nome_anime, tipo_anime, genero_anime, total_eps, publico_alvo_anime, codigo_anime);
 
                 String div = "                <td><div id=\"box\">\n"
-                            + "                    <h1><font color=\"#077F09\">" + nome_anime + "</font></h1>\n"
-                            + "                    <font color=\"#2D7F2F\">Tipo: " + tipoAnimeDiv + "</font><br>\n"
-                            + "                    <font color=\"#2D7F2F\">Quantidade de Episódios: " + total_eps + "</font><p><p><p>\n"     
-                            + "                    <font color=\"#2D7F2F\">Gênero: " + generoAnimeDiv + "</font><p><p><p>\n"
-                            + "                    <font color=\"#2D7F2F\">Público Alvo: " + publico_alvoAnimeDiv + "</font><p><p><p>\n";
-                    File.addDivAnime(div);
-                    num_animes++;
+                            + "                    <h1><font color=\"#090820\">" + nome_anime + "</font></h1>\n"
+                            + "                    <font color=\"#321239\">Tipo: " + tipoAnimeDiv + "</font><br>\n"
+                            + "                    <font color=\"#321239\">Quantidade de Episódios: " + total_eps + "</font><p><p><p>\n"     
+                            + "                    <font color=\"#321239\">Gênero: " + generoAnimeDiv + "</font><p><p><p>\n"
+                            + "                    <font color=\"#321239\">Público Alvo: " + publico_alvoAnimeDiv + "</font><p><p><p>\n";
+                File.addDivAnime(div);
+                codigo_anime++;
             }
         }
 
@@ -145,9 +142,9 @@ public class Semantico extends malBaseVisitor<Void>{
     public Void visitDeclare_avaliacao(malParser.Declare_avaliacaoContext ctx) {
 
         String nome_anime = ctx.cmdAddNome().nome_anime().getText();
-        int nota_anime = ctx.cmdAddNota().nota().getAltNumber();
+        String nota_anime = ctx.cmdAddNota().nota().getText();
         String status = ctx.cmdAddStatus().getText();
-        int eps_assistidos = ctx.cmdAddEps().qtdEps().getAltNumber();
+        String eps_assistidos = ctx.cmdAddEps().qtdEps().getText();
         String comentario = ctx.cmdAddComentario().getText();
 
         if (!(tabela.existe(nome_anime))) {
@@ -155,15 +152,31 @@ public class Semantico extends malBaseVisitor<Void>{
                 "Atenção!! O Anime " + nome_anime + " não existe.</div>\n");
         }
         else {
+            int codigo_anime = tabela.verificarCodigo(nome_anime);
+            int total_eps_anime =  Integer.parseInt(tabela.verificar_Total_eps(nome_anime));
+            int eps_assistidos_int = ctx.cmdAddEps().getAltNumber();
             if (status == "Completo"){
                 //
+                if(eps_assistidos_int != total_eps_anime){
+                    File.appendDivAvaliacao(codigo_anime,
+                        "                    <font color=\"#321239\">Erro Semântico: Usuário não termino de assistir \"" + total_eps_anime + "\" episódios!</font><p>\n");
+                } else {
+                    File.appendDivAvaliacao(codigo_anime, 
+                        "                    <font color=\"#321239\">Completou os\"" + total_eps_anime + "\" episódios do anime!</font><p>\n");
+                }
+            } else if (status == "Assistindo"){
+                File.appendDivAvaliacao(codigo_anime, 
+                    "                    <font color=\"#321239\">Está no episódio\"" + eps_assistidos_int + "\" do anime!</font><p>\n");
+            } else if (status == "Abandonado"){
+                File.appendDivAvaliacao(codigo_anime, 
+                    "                    <font color=\"#321239\">Abandonou assistindo\"" + eps_assistidos_int + "\" episódios do anime!</font><p>\n");
             }
             String div = "                <td><div id=\"box\">\n"
-                        + "                    <h1><font color=\"#077F09\">" + nome_anime + "</font></h1>\n"
-                        + "                    <font color=\"#2D7F2F\">Tipo: " + nota_anime + "</font><br>\n"
-                        + "                    <font color=\"#2D7F2F\">Quantidade de Episódios: " + status + "</font><p><p><p>\n"     
-                        + "                    <font color=\"#2D7F2F\">Gênero: " + eps_assistidos + "</font><p><p><p>\n"
-                        + "                    <font color=\"#2D7F2F\">Público Alvo: " + comentario + "</font><p><p><p>\n";
+                    + "                    <h1><font color=\"#090820\">Avaliação de " + nome_anime + "</font></h1>\n"
+                    + "                    <font color=\"#321239\">Tipo: " + nota_anime + "</font><br>\n"
+                    + "                    <font color=\"#321239\">Quantidade de Episódios: " + status + "</font><p><p><p>\n"     
+                    + "                    <font color=\"#321239\">Gênero: " + eps_assistidos + "</font><p><p><p>\n"
+                    + "                    <font color=\"#321239\">Público Alvo: " + comentario + "</font><p><p><p>\n";
             File.addDivAvaliacao(div);
             num_avaliacoes++;
 

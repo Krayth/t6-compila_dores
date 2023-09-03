@@ -1,8 +1,5 @@
 // Generated from java-escape by ANTLR 4.11.1
 package br.ufscar.dc.compiladores.mal;
-
-  import br.ufscar.dc.compiladores.mal.File;
-
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 /**
@@ -57,6 +54,27 @@ public class malBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements ma
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitPublico_alvo(malParser.Publico_alvoContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitStatusCompleto(malParser.StatusCompletoContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitStatusAssistindo(malParser.StatusAssistindoContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitStatusAbandonado(malParser.StatusAbandonadoContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

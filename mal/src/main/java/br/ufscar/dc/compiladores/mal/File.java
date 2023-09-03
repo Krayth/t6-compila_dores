@@ -8,26 +8,26 @@ import java.util.List;
 
 public class File {
 
-    public static StringBuffer sb = new StringBuffer();
-    public static String pf; // variavel para guardar o caminho do arquivo
+    public static StringBuffer File = new StringBuffer();
+    public static String pathFile; // variavel para guardar o caminho do arquivo
     
-    // Lista que separa cada div pelo personagem correto
+    // Lista que separa cada div pelo Anime e avaliação
     public static List<String> divAnime = new ArrayList<String>();
     public static List<String> divAvaliacao = new ArrayList<String>();
 
     public static void AddString(String str) {
-        sb.append(str).append("\n");
+        File.append(str).append("\n");
     }
 
     public static String getText() {
-        return sb.toString();
+        return File.toString();
     }
 
     // Geracao de codigo
     // A funcao criaArquivo cria o escopo do codigo html junto com o estilo CSS
-    public static void criaArquivo(String caminho) {
-        pf = caminho;
-        sb.append("<html>\n" +
+    public static void criaArquivo(String path) {
+        pathFile = path;
+        File.append("<html>\n" +
                 "    <head>\n" +
                 "        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n" +
                 "        <title>Catálogo de animes com avaliações</title>\n" +
@@ -59,7 +59,7 @@ public class File {
                 "                margin: 10px;\n" +
                 "                padding: 10px;\n" +
                 "                text-align: center;\n" +
-                "                color: #6A60E9;\n" +
+                "                color: #db8630;\n" +
                 "                font-family: sans-serif;\n" +
                 "                font-weight: bold;\n" +
                 "                background-color: #8d91d0;\n" +
@@ -119,7 +119,7 @@ public class File {
         divAvaliacao.add(info);
     }
         
-    // Concatena div de um personagem
+    // Concatena div de um Anime
     public static void appendDivAnime(int codigo_anime, String infoNova) {
         String infoAnterior = divAnime.get(codigo_anime);
         String infoConcat = infoAnterior.concat(infoNova);
@@ -137,22 +137,22 @@ public class File {
     // Grava todas as info concatenadas no arquivo de saida
     public static void gravaArquivo() {
         for(int i = 0; i < divAnime.size(); i++) {
-            appendDivAnime(i, "                </td></div>\n\n");
-            sb.append(divAnime.get(i));
+            appendDivAnime(i, "                </td>nro de animes"+i+"</div>\n\n");
+            File.append(divAnime.get(i));
         }
         
         for(int i = 0; i < divAvaliacao.size(); i++) {
-            appendDivAvaliacao(i, "                </td></div>\n\n");
-            sb.append(divAvaliacao.get(i));
+            appendDivAvaliacao(i, "                </td>nro de avaliacoes"+divAvaliacao.size()+"</div>\n\n");
+            File.append(divAvaliacao.get(i));
         }
 
-        sb.append("            </tr>\n" +
+        File.append("            </tr>\n" +
                 "        </table>\n" +
                 "    </body>\n" +
                 "</html>");
 
         try {
-            Files.writeString(Paths.get(pf), getText());
+            Files.writeString(Paths.get(pathFile), getText());
         } catch (IOException e) {
         }
         System.exit(0);

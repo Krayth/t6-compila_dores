@@ -1,14 +1,5 @@
 grammar mal;
 
-@header {
-  import br.ufscar.dc.compiladores.mal.File;
-}
-
-//comentario
-Comentario:
-    '[' ~('\n'|'\r'|']'|'[')* '\r'? ']' { skip(); };
-WhiteSpace:
-    (' ' | '\t' | '\r' | '\n') { skip(); };
 
 delimitador: ':';
 
@@ -25,6 +16,10 @@ genero: 'Acao' | 'Aventura' | 'Drama' | 'Comedia' | 'Terror' |
         'Esporte';
 
 publico_alvo: 'Shounen' | 'Seinen' | 'Shoujo' | 'R18';
+
+statusCompleto: 'Completo';
+statusAssistindo: 'Assistindo';
+statusAbandonado: 'Abandonado';
 
 nome_anime: NOME;
 declare_nome: nome_anime;
@@ -53,24 +48,29 @@ declare_avaliacao:
 
 cmdAddNome: nome_anime;
 cmdAddNota: nota;
-cmdAddStatus: 'Completo' | 'Assistindo' | 'Abandonado';
+cmdAddStatus: 'Completo' |'Assistindo' |'Abandonado';
+
 cmdAddEps: qtdEps;
 cmdAddComentario:
     '{'
-        ~('\n'|'\r'|'{' | '}' )*
+        NOME ~( '{' | '}' )*
     '}';
 
-//comentario nao fechado
-//COMENTARIO_NAO_FECHADO: '[' ~(']')* '\n';
+//comentario
+Comentario:
+    '[' ~('n'|'\r'|']'|'[')* '\r'? ']' { skip(); };
+WhiteSpace:
+    (' ' | '\t' | '\r' | '\n') { skip(); };
 
+//comentario nao fechado
 ErroComentarioCodigo: 
-    '['
+    '{'
     { File.AddString("                    <div id=\"erros\">" + 
                     "Comentario de Código não Fechado.</div>\n");
     File.gravaArquivo(); };
 
 ErroAddComentario:
-    '{' 
+    '[' 
     { File.AddString("                    <div id=\"erros\">" + 
                     "Comentario de Avaliação não Fechado.</div>\n");
     File.gravaArquivo(); };
