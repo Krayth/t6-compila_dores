@@ -2,13 +2,14 @@ package br.ufscar.dc.compiladores.mal;
 
 import br.ufscar.dc.compiladores.mal.TabelaDeSimbolos.Genero;
 import br.ufscar.dc.compiladores.mal.TabelaDeSimbolos.Publico_alvo;
+import br.ufscar.dc.compiladores.mal.TabelaDeSimbolos.Status;
 import br.ufscar.dc.compiladores.mal.TabelaDeSimbolos.Tipo_anime;
 
 public class Semantico extends malBaseVisitor<Void>{
     
     TabelaDeSimbolos tabela;
     int codigo_anime = 0;
-    int num_avaliacoes = 0;
+    int codigo_avaliacoes = 0;
 
     @Override
     public Void visitProgram(malParser.ProgramContext ctx) {
@@ -140,60 +141,66 @@ public class Semantico extends malBaseVisitor<Void>{
 
     @Override
     public Void visitDeclare_avaliacao(malParser.Declare_avaliacaoContext ctx) {
-
         String nome_anime = ctx.cmdAddNome().nome_anime().getText();
         String nota_anime = ctx.cmdAddNota().nota().getText();
-        String status = ctx.cmdAddStatus().getText();
+        Status status = SemanticoUtils.verificarStatus(tabela, ctx);
         String eps_assistidos = ctx.cmdAddEps().qtdEps().getText();
         String comentario = ctx.cmdAddComentario().getText();
 
+        String statusDiv = "Erro";
+
+        
         if (!(tabela.existe(nome_anime))) {
             File.AddString("                    <div id=\"erros\">" + 
-                "Atenção!! O Anime " + nome_anime + " não existe.</div>\n");
+            "Atenção!! O Anime " + nome_anime + " não existe.</div>\n");
         }
         else {
-            int codigo_anime = tabela.verificarCodigo(nome_anime);
             int total_eps_anime =  Integer.parseInt(tabela.verificar_Total_eps(nome_anime));
-            int eps_assistidos_int = ctx.cmdAddEps().getAltNumber();
-
+            int eps_assistidos_int = Integer.parseInt(eps_assistidos);
+            
             if (eps_assistidos_int > total_eps_anime) {
-                 File.appendDivAvaliacao(codigo_anime,
-            "                    <font color=\"#321239\">Erro Semântico: Mais episódios assistidos do que o total!</font><p>\n");
-            }
-
-            else if (status == "Completo") {
-                //
-                if(eps_assistidos_int != total_eps_anime) {
-                    File.appendDivAvaliacao(codigo_anime,
-                        "                    <font color=\"#321239\">Erro Semântico: Usuário não terminou de assistir \"" + total_eps_anime + "\" episódios!</font><p>\n");
-                } else {
-                    File.appendDivAvaliacao(codigo_anime, 
-                        "                    <font color=\"#321239\">Completou os\"" + total_eps_anime + "\" episódios do anime!</font><p>\n");
+                File.AddString("                    <div id=\"erros\">" + 
+                "Atenção!! Erro Semântico: "+ eps_assistidos + " episódios assistidos maior do que o total.</div>\n");
+            } else {
+                switch (status) {
+                    case COMPLETO:
+                        if(eps_assistidos_int < total_eps_anime){
+                            File.AddString("                    <div id=\"erros\">" + 
+                                "Atenção!! Erro Semântico: " + eps_assistidos + " episódios assistidos. NÃO TERMINOU DE ASSISTIR.</div>\n");
+                                statusDiv = "Completo mas não assistiu tudo???";
+                        } else{
+                            statusDiv = "Completo";
+                        }
+                        break;
+                    case ABANDONADO:
+                        if(eps_assistidos_int == total_eps_anime){
+                            File.AddString("                    <div id=\"erros\">" + 
+                                "Atenção!! Erro Semântico: Usuário abandonou assistindo todos os \"" + total_eps_anime + "\" episódios do anime !</font><p>\n");
+                            statusDiv = "Abandonado, mas assistiu todos os eps??";
+                        } else{
+                            statusDiv = "Abandonado";
+                        }
+                        break;
+                    case ASSISTINDO:
+                        statusDiv = "Assistindo";
+                        break;
+                    default:
+                        statusDiv = "Tipo Inválido";
+                        break;
                 }
-            } else if (status == "Assistindo") {
-                File.appendDivAvaliacao(codigo_anime, 
-                    "                    <font color=\"#321239\">Está no episódio\"" + eps_assistidos_int + "\" do anime!</font><p>\n");
-            } else if (status == "Abandonado") {
-                if(eps_assistidos_int == total_eps_anime) {
-                    File.appendDivAvaliacao(codigo_anime,
-                        "                    <font color=\"#321239\">Erro Semântico: Usuário abandonou assistindo todos os \"" + total_eps_anime + 
-                        "\" episódios do anime !</font><p>\n");
-                } else {
-                    File.appendDivAvaliacao(codigo_anime, 
-                    "                    <font color=\"#321239\">Abandonou assistindo\"" + eps_assistidos_int + "\" episódios do anime!</font><p>\n");
-                }
-                
+                 
+                String div = "                <td><div id=\"box\">\n"
+                        + "                    <h1><font color=\"#090820\">Avaliação de " + nome_anime + "</font></h1>\n"
+                        + "                    <font color=\"#321239\">Nota: " + nota_anime + "</font><br>\n"
+                        + "                    <font color=\"#321239\">Status: " + statusDiv + "</font><p><p><p>\n"     
+                        + "                    <font color=\"#321239\">Episódios assistidos: " + eps_assistidos + "</font><p><p><p>\n"
+                        + "                    <font color=\"#321239\">Comentário: " + comentario + "</font><p><p><p>\n";
+                File.addDivAvaliacao(div);
+                codigo_avaliacoes++;
             }
-            String div = "                <td><div id=\"box\">\n"
-                    + "                    <h1><font color=\"#090820\">Avaliação de " + nome_anime + "</font></h1>\n"
-                    + "                    <font color=\"#321239\">Tipo: " + nota_anime + "</font><br>\n"
-                    + "                    <font color=\"#321239\">Quantidade de Episódios: " + status + "</font><p><p><p>\n"     
-                    + "                    <font color=\"#321239\">Gênero: " + eps_assistidos + "</font><p><p><p>\n"
-                    + "                    <font color=\"#321239\">Público Alvo: " + comentario + "</font><p><p><p>\n";
-            File.addDivAvaliacao(div);
-            num_avaliacoes++;
-
+            
         }
+
         return super.visitDeclare_avaliacao(ctx);
     }
 }

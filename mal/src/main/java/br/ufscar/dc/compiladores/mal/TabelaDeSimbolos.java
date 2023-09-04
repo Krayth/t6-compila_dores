@@ -29,12 +29,12 @@ public class TabelaDeSimbolos {
         INVALIDO   
     }
 
-    // public enum Status {
-    //     COMPLETO,
-    //     ASSISTINDO,
-    //     ABANDONADO,
-    //     INVALIDO   
-    // }
+    public enum Status {
+        COMPLETO,
+        ASSISTINDO,
+        ABANDONADO,
+        INVALIDO   
+    }
 
     class EntradaTabelaSimbolos {
         String nome_anime;

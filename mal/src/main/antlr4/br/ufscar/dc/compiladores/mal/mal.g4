@@ -1,11 +1,15 @@
 grammar mal;
 
+//comentario
+Comentario:
+    '[' ~( '\r'|']'|'[')* '\r'? ']' { skip(); };
+WhiteSpace:
+    (' ' | '\t' | '\r' | '\n') { skip(); };
 
 delimitador: ':';
 
 NUM: [0-9]+;
 NOME: ([A-Z] | [0-9]) ([a-zA-Z] | [0-9] | ' ' | '-')*;
-COMENTARIO: ([a-zA-Z] | [0-9] | ' '| '-' | '!' | ',' | '.')*;
 
 nota: NUM;
 qtdEps: NUM;
@@ -37,7 +41,6 @@ declare_anime:
 
 total_eps: qtdEps;
 
-
 declare_avaliacao:
     'comeco_avaliacao'
         'Nome' ':' cmdAddNome
@@ -52,16 +55,8 @@ cmdAddNota: nota;
 cmdAddStatus: 'Completo' |'Assistindo' |'Abandonado';
 
 cmdAddEps: qtdEps;
-cmdAddComentario:
-    '{'
-        COMENTARIO ~( '{' | '}' )*
-    '}';
+cmdAddComentario:'"' .*? '"';
 
-//comentario
-Comentario:
-    '[' ~('n'|'\r'|']'|'[')* '\r'? ']' { skip(); };
-WhiteSpace:
-    (' ' | '\t' | '\r' | '\n') { skip(); };
 
 //comentario nao fechado
 ErroComentarioCodigo: 
@@ -70,11 +65,11 @@ ErroComentarioCodigo:
                     "Comentario de Código não Fechado.</div>\n");
     File.gravaArquivo(); };
 
-ErroAddComentario:
-    '[' 
-    { File.AddString("                    <div id=\"erros\">" + 
-                    "Comentario de Avaliação não Fechado.</div>\n");
-    File.gravaArquivo(); };
+// ErroAddComentario:
+//     '"' 
+//     { File.AddString("                    <div id=\"erros\">" + 
+//                     "Comentario de Avaliação não Fechado.</div>\n");
+//     File.gravaArquivo(); };
 
 ANY: 
     .

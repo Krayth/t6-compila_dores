@@ -38,20 +38,25 @@ public class File {
                 "                -moz-background-size: cover;"+
                 "                -o-background-size: cover;"+
                 "                background-size: cover;"+
-                "            }\n" +                                
+                "            }\n" +
+                "            table {\n" +
+                "               table-layout: fixed;\n" +
+                "               width: 100%;\n;"+
+                "            }\n" +                               
                 "            h1 {\n" +
                 "                text-align: center;\n" +
                 "                color: #fff;\n" +
                 "                font-family: sans-serif;\n" +
                 "                font-weight: bold; \n" +
                 "            }"+
-                "            td {\n" +
+                "            th, td {\n" +
                 "                vertical-align: top;\n" +
+                "                word-wrap: break-word;\n"+
                 "            }\n" +
                 "            #box {\n" +
                 "                width: 300px;\n" +
-                "                min-height: 400px;\n" +
-                "                max-height: 1000px;\n" +
+                "                min-height: 300px;\n" +
+                "                max-height: 400px;\n" +
                 "                border-style: solid;\n" +
                 "                border-color: #350A58;\n" +
                 "                border-width: thin;\n" +
@@ -74,7 +79,7 @@ public class File {
                 "                margin: 10px;\n" +
                 "                padding: 10px;\n" +
                 "                text-align: center;\n" +
-                "                color: #321239;\n" +
+                "                color: #900c3f;\n" +
                 "                font-family: sans-serif;\n" +
                 "                font-weight: bold;\n" +
                 "                background-color: #8d91d0;\n" +
@@ -137,12 +142,18 @@ public class File {
     // Grava todas as info concatenadas no arquivo de saida
     public static void gravaArquivo() {
         for(int i = 0; i < divAnime.size(); i++) {
-            appendDivAnime(i, "                </td>nro de animes"+i+"</div>\n\n");
+            appendDivAnime(i, "                </td></div>\n\n");
             File.append(divAnime.get(i));
+
+            if(i == 3){
+                File.append("            <tr>\n");
+            }
         }
         
+        File.append("            </tr>\n");
+        File.append("            <tr>\n");
         for(int i = 0; i < divAvaliacao.size(); i++) {
-            appendDivAvaliacao(i, "                </td>nro de avaliacoes"+divAvaliacao.size()+"</div>\n\n");
+            appendDivAvaliacao(i, "                </td></div>\n\n");
             File.append(divAvaliacao.get(i));
         }
 

@@ -94,28 +94,24 @@ public class SemanticoUtils {
 
     }
 
-    // public static TabelaDeSimbolos.Status getStatus(TabelaDeSimbolos tabela, malParser.Declare_avaliacaoContext ctx) {
-    //     String status_anime = ctx.cmdAddStatus().getText();
+    public static TabelaDeSimbolos.Status verificarStatus(TabelaDeSimbolos tabela, malParser.Declare_avaliacaoContext ctx) {
+        String status_anime = ctx.cmdAddStatus().getText();
+        if (status_anime != null) {
 
-    //     switch (status_anime) {
-    //         case "Completo":   return TabelaDeSimbolos.Status.COMPLETO;
-    //         case "Assistindo": return TabelaDeSimbolos.Status.ASSISTINDO;
-    //         case "Abandonado": return TabelaDeSimbolos.Status.ABANDONADO;
-
-    //         default:
-    //             File.AddString("                    <div id=\"erros\">" + 
-    //                 "Erro: o Publico Alvo de anime " + status_anime + " não existe!</div>\n");
-    //             return TabelaDeSimbolos.Status.INVALIDO;
-    //     }
-    // }
-
-    // public static TabelaDeSimbolos.Status verificarStatusAnime(TabelaDeSimbolos tabela, String nomeAnime) {
+            switch (status_anime) {
+                case "Completo":   return TabelaDeSimbolos.Status.COMPLETO;
+                case "Assistindo": return TabelaDeSimbolos.Status.ASSISTINDO;
+                case "Abandonado": return TabelaDeSimbolos.Status.ABANDONADO;
     
-    //     if(tabela.existe(nomeAnime)) {
-    //         return tabela.verificarStatusAnime(nomeAnime);
-    //     } else {
-    //         return TabelaDeSimbolos.Status.INVALIDO  ;
-    //     }
-
-    // }
+                default:
+                    File.AddString("                    <div id=\"erros\">" + 
+                        "Erro: o Status de anime " + status_anime + " não existe!</div>\n");
+                    return TabelaDeSimbolos.Status.INVALIDO;
+            }
+        } else {
+            File.AddString("                    <div id=\"erros\">" + 
+                        "Erro: o Status de anime não existe!</div>\n");
+            return TabelaDeSimbolos.Status.INVALIDO;
+        }
+    }
 }
