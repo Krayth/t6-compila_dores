@@ -5,6 +5,7 @@ delimitador: ':';
 
 NUM: [0-9]+;
 NOME: ([A-Z] | [0-9]) ([a-zA-Z] | [0-9] | ' ' | '-')*;
+COMENTARIO: ([a-zA-Z] | [0-9] | ' '| '-' | '!' | ',' | '.')*;
 
 nota: NUM;
 qtdEps: NUM;
@@ -53,7 +54,7 @@ cmdAddStatus: 'Completo' |'Assistindo' |'Abandonado';
 cmdAddEps: qtdEps;
 cmdAddComentario:
     '{'
-        NOME ~( '{' | '}' )*
+        COMENTARIO ~( '{' | '}' )*
     '}';
 
 //comentario

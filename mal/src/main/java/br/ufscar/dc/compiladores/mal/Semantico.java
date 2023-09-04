@@ -155,21 +155,34 @@ public class Semantico extends malBaseVisitor<Void>{
             int codigo_anime = tabela.verificarCodigo(nome_anime);
             int total_eps_anime =  Integer.parseInt(tabela.verificar_Total_eps(nome_anime));
             int eps_assistidos_int = ctx.cmdAddEps().getAltNumber();
-            if (status == "Completo"){
+
+            if (eps_assistidos_int > total_eps_anime) {
+                 File.appendDivAvaliacao(codigo_anime,
+            "                    <font color=\"#321239\">Erro Semântico: Mais episódios assistidos do que o total!</font><p>\n");
+            }
+
+            else if (status == "Completo") {
                 //
-                if(eps_assistidos_int != total_eps_anime){
+                if(eps_assistidos_int != total_eps_anime) {
                     File.appendDivAvaliacao(codigo_anime,
-                        "                    <font color=\"#321239\">Erro Semântico: Usuário não termino de assistir \"" + total_eps_anime + "\" episódios!</font><p>\n");
+                        "                    <font color=\"#321239\">Erro Semântico: Usuário não terminou de assistir \"" + total_eps_anime + "\" episódios!</font><p>\n");
                 } else {
                     File.appendDivAvaliacao(codigo_anime, 
                         "                    <font color=\"#321239\">Completou os\"" + total_eps_anime + "\" episódios do anime!</font><p>\n");
                 }
-            } else if (status == "Assistindo"){
+            } else if (status == "Assistindo") {
                 File.appendDivAvaliacao(codigo_anime, 
                     "                    <font color=\"#321239\">Está no episódio\"" + eps_assistidos_int + "\" do anime!</font><p>\n");
-            } else if (status == "Abandonado"){
-                File.appendDivAvaliacao(codigo_anime, 
+            } else if (status == "Abandonado") {
+                if(eps_assistidos_int == total_eps_anime) {
+                    File.appendDivAvaliacao(codigo_anime,
+                        "                    <font color=\"#321239\">Erro Semântico: Usuário abandonou assistindo todos os \"" + total_eps_anime + 
+                        "\" episódios do anime !</font><p>\n");
+                } else {
+                    File.appendDivAvaliacao(codigo_anime, 
                     "                    <font color=\"#321239\">Abandonou assistindo\"" + eps_assistidos_int + "\" episódios do anime!</font><p>\n");
+                }
+                
             }
             String div = "                <td><div id=\"box\">\n"
                     + "                    <h1><font color=\"#090820\">Avaliação de " + nome_anime + "</font></h1>\n"

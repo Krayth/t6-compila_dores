@@ -22,8 +22,8 @@ public class malParser extends Parser {
 		T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, T__23=24, 
 		T__24=25, T__25=26, T__26=27, T__27=28, T__28=29, T__29=30, T__30=31, 
 		T__31=32, T__32=33, T__33=34, T__34=35, T__35=36, T__36=37, T__37=38, 
-		NUM=39, NOME=40, Comentario=41, WhiteSpace=42, ErroComentarioCodigo=43, 
-		ErroAddComentario=44, ANY=45;
+		NUM=39, NOME=40, COMENTARIO=41, Comentario=42, WhiteSpace=43, ErroComentarioCodigo=44, 
+		ErroAddComentario=45, ANY=46;
 	public static final int
 		RULE_delimitador = 0, RULE_nota = 1, RULE_qtdEps = 2, RULE_tipo_anime = 3, 
 		RULE_genero = 4, RULE_publico_alvo = 5, RULE_statusCompleto = 6, RULE_statusAssistindo = 7, 
@@ -50,7 +50,7 @@ public class malParser extends Parser {
 			"'Assistindo'", "'Abandonado'", "'inicio'", "'Nome'", "'Tipo'", "'Genero'", 
 			"'Quantidade_Eps'", "'Publico_Alvo'", "'fim'", "'comeco_avaliacao'", 
 			"'Nota'", "'Status'", "'fim_avaliacao'", "'}'", null, null, null, null, 
-			"'{'", "'['"
+			null, "'{'", "'['"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
@@ -59,8 +59,8 @@ public class malParser extends Parser {
 			null, null, null, null, null, null, null, null, null, null, null, null, 
 			null, null, null, null, null, null, null, null, null, null, null, null, 
 			null, null, null, null, null, null, null, null, null, null, null, null, 
-			null, null, null, "NUM", "NOME", "Comentario", "WhiteSpace", "ErroComentarioCodigo", 
-			"ErroAddComentario", "ANY"
+			null, null, null, "NUM", "NOME", "COMENTARIO", "Comentario", "WhiteSpace", 
+			"ErroComentarioCodigo", "ErroAddComentario", "ANY"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -1159,7 +1159,7 @@ public class malParser extends Parser {
 		public TerminalNode ErroComentarioCodigo(int i) {
 			return getToken(malParser.ErroComentarioCodigo, i);
 		}
-		public TerminalNode NOME() { return getToken(malParser.NOME, 0); }
+		public TerminalNode COMENTARIO() { return getToken(malParser.COMENTARIO, 0); }
 		public CmdAddComentarioContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1189,11 +1189,11 @@ public class malParser extends Parser {
 			setState(123);
 			match(ErroComentarioCodigo);
 			setState(124);
-			match(NOME);
+			match(COMENTARIO);
 			setState(128);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 61297773248510L) != 0) {
+			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 122870424403966L) != 0) {
 				{
 				{
 				setState(125);
@@ -1228,7 +1228,7 @@ public class malParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u0001-\u0086\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
+		"\u0004\u0001.\u0086\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
 		"\u0002\u0007\u0002\u0002\u0003\u0007\u0003\u0002\u0004\u0007\u0004\u0002"+
 		"\u0005\u0007\u0005\u0002\u0006\u0007\u0006\u0002\u0007\u0007\u0007\u0002"+
 		"\b\u0007\b\u0002\t\u0007\t\u0002\n\u0007\n\u0002\u000b\u0007\u000b\u0002"+
@@ -1250,7 +1250,7 @@ public class malParser extends Parser {
 		"\u0082\t\u0014\u0001\u0014\u0001\u0014\u0001\u0014\u0000\u0000\u0015\u0000"+
 		"\u0002\u0004\u0006\b\n\f\u000e\u0010\u0012\u0014\u0016\u0018\u001a\u001c"+
 		"\u001e \"$&(\u0000\u0005\u0001\u0000\u0002\u0005\u0001\u0000\u0006\u0013"+
-		"\u0001\u0000\u0014\u0017\u0001\u0000\u0018\u001a\u0002\u0000&&++u\u0000"+
+		"\u0001\u0000\u0014\u0017\u0001\u0000\u0018\u001a\u0002\u0000&&,,u\u0000"+
 		"*\u0001\u0000\u0000\u0000\u0002,\u0001\u0000\u0000\u0000\u0004.\u0001"+
 		"\u0000\u0000\u0000\u00060\u0001\u0000\u0000\u0000\b2\u0001\u0000\u0000"+
 		"\u0000\n4\u0001\u0000\u0000\u0000\f6\u0001\u0000\u0000\u0000\u000e8\u0001"+
@@ -1290,7 +1290,7 @@ public class malParser extends Parser {
 		"\u0001\u0000\u0000\u0000st\u0003\u0012\t\u0000t!\u0001\u0000\u0000\u0000"+
 		"uv\u0003\u0002\u0001\u0000v#\u0001\u0000\u0000\u0000wx\u0007\u0003\u0000"+
 		"\u0000x%\u0001\u0000\u0000\u0000yz\u0003\u0004\u0002\u0000z\'\u0001\u0000"+
-		"\u0000\u0000{|\u0005+\u0000\u0000|\u0080\u0005(\u0000\u0000}\u007f\b\u0004"+
+		"\u0000\u0000{|\u0005,\u0000\u0000|\u0080\u0005)\u0000\u0000}\u007f\b\u0004"+
 		"\u0000\u0000~}\u0001\u0000\u0000\u0000\u007f\u0082\u0001\u0000\u0000\u0000"+
 		"\u0080~\u0001\u0000\u0000\u0000\u0080\u0081\u0001\u0000\u0000\u0000\u0081"+
 		"\u0083\u0001\u0000\u0000\u0000\u0082\u0080\u0001\u0000\u0000\u0000\u0083"+
