@@ -162,8 +162,14 @@ public class Semantico extends malBaseVisitor<Void>{
             int total_eps_anime =  Integer.parseInt(tabela.verificar_Total_eps(nome_anime));
             int eps_assistidos_int = Integer.parseInt(eps_assistidos);
             
+            // Verifica se a nota esta entre 0 e 10
+            if (Integer.parseInt(nota_anime) < 0 || Integer.parseInt(nota_anime) > 10) {
+                File.AddString("                    <div id=\"erros\">" + 
+                "Atenção!! Erro Semântico: Nota "+ nota_anime + " inválida. Selecione um valor entre 0 e 10</div>\n");
+            }
+
             // Verifica se o numero de episodios assistidos e menor que o numero total
-            if (eps_assistidos_int > total_eps_anime) {
+            else if (eps_assistidos_int > total_eps_anime) {
                 File.AddString("                    <div id=\"erros\">" + 
                 "Atenção!! Erro Semântico: "+ eps_assistidos + " episódios assistidos maior do que o total.</div>\n");
 
