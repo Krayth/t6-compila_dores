@@ -7,7 +7,8 @@
 - Fernando Eiji Hieda - 769768
 
 ## Vídeo de Apresentação
-[link do vídeo aqui]
+Vídeo gravado pelo Eduardo e comentado pelo Bruno
+[https://youtu.be/gc2a0kWSxyU?si=Qa7VtJxcsSGsw9ka]
 
 ## Sobre
 
