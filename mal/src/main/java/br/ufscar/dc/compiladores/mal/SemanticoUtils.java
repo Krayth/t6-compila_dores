@@ -6,6 +6,7 @@ import java.util.List;
 public class SemanticoUtils {
     public static List<String> errosSemanticos = new ArrayList<>();
 
+    // Verifica o Tipo de anime
     public static TabelaDeSimbolos.Tipo_anime verificarTipo_anime(TabelaDeSimbolos tabela, malParser.Declare_animeContext ctx) {
         String tipo_anime = ctx.tipo_anime().getText();
 
@@ -31,6 +32,7 @@ public class SemanticoUtils {
 
     }
 
+    // Verifica o Genero do anime
     public static TabelaDeSimbolos.Genero verificarGenero_anime(TabelaDeSimbolos tabela, malParser.Declare_animeContext ctx) {
         String genero_anime = ctx.genero().getText();
 
@@ -68,10 +70,12 @@ public class SemanticoUtils {
  
     }
 
+    // Verifica o Publico Alvo do anime
     public static TabelaDeSimbolos.Publico_alvo verificarPublico_alvo(TabelaDeSimbolos tabela, malParser.Declare_animeContext ctx) {;
         String publico_alvo_anime = ctx.publico_alvo().getText();
 
         switch (publico_alvo_anime) {
+            case "Livre": return TabelaDeSimbolos.Publico_alvo.LIVRE;
             case "Shounen": return TabelaDeSimbolos.Publico_alvo.SHOUNEN;
             case "Seinen":  return TabelaDeSimbolos.Publico_alvo.SEINEN;
             case "Shoujo":  return TabelaDeSimbolos.Publico_alvo.SHOUJO;
@@ -94,6 +98,7 @@ public class SemanticoUtils {
 
     }
 
+    // Verifica o Status da avaliacao
     public static TabelaDeSimbolos.Status verificarStatus(TabelaDeSimbolos tabela, malParser.Declare_avaliacaoContext ctx) {
         String status_anime = ctx.cmdAddStatus().getText();
         if (status_anime != null) {

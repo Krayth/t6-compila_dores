@@ -4,14 +4,12 @@ inicio
 	Genero:Acao
 	Quantidade_Eps:250
 	Publico_Alvo:Shounen
-	[opiniao objetivamente errada
 fim
 
 comeco_avaliacao
-	Nome:Naruto
-	Nota:2
-	Status:Abandonado
-	32
-	{Muito ruim grrr}
+	Nome:One Piece
+	Nota:10
+	Status:Completo
+	250
+	"Muito ruim"
 fim_avaliacao
-

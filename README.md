@@ -45,7 +45,7 @@ Como o projeto não exige tanta complexidade a linguagem está restrita a poucas
 - Descrever o anime a ser inserido na lista
     - Nome
     - Tipo de mídia
-    - Gênero
+    - Gênero (Limite de 1)
     - Quantidade de Episódios
     - Público Alvo
 - Avaliar o anime
@@ -68,4 +68,22 @@ Instalar JDK 11.0.18 de alguma fonte.
 
 ## Execução do programa
 
-TODO
+Para compilar o programa escreva o comando:
+´´´
+mvn package
+´´´
+
+Para executar o programa é necessário 3 endereços/caminhos de arquivos:
+- Endereço para o arquivo de dependências .jar
+- Endereço para o arquivo de entrada .txt
+- Endereço para o arquivo de saida .html
+
+Tendo esses três endereços use:
+´´´
+Java -jar [endereço do .jar] [endereço do .txt] [endereço do .html]
+´´´
+
+Exemplo:
+´´´
+Java -jar C:\User\Nome\Desktop\t6-compila_dores\mal\target\mal-1.0-SNAPSHOT-jar-with-dependencies.jar C:\User\Nome\Desktop\Entradas\teste1.txt C:\User\Nome\Desktop\Saidas\teste1.html
+´´´

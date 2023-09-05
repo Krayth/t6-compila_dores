@@ -6,18 +6,10 @@ inicio
 	Publico_Alvo:Shounen
 fim
 
-inicio
-	Nome:One Piece
-	Tipo:TV
-	Genero:Acao
-	Quantidade_Eps:500
-	Publico_Alvo:Shounen
-fim
-
 comeco_avaliacao
 	Nome:Naruto
-	Nota:10
-	Status:Completo
+	Nota:5
+	Status:Abandonado
 	250
-	{Muito ruim
+	"Muito ruim"
 fim_avaliacao

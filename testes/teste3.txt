@@ -1,7 +1,0 @@
-inicio
-    Nome: Naruto
-    Tipo: TV
-    Genero: Acao
-    Quantidade_Eps: 250
-    Publico_Alvo: Shounen
-fim

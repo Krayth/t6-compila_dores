@@ -1,0 +1,15 @@
+inicio
+	Nome:Naruto
+	Tipo:TV
+	Genero:Acao
+	Quantidade_Eps:250
+	Publico_Alvo:Shounen
+fim
+
+comeco_avaliacao
+	Nome:Naruto
+	Nota:10
+	Status:Completo
+	300
+	"Muito ruim"
+fim_avaliacao

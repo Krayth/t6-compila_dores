@@ -22,6 +22,7 @@ public class TabelaDeSimbolos {
     }
 
     public enum Publico_alvo {
+        LIVRE,
         SHOUNEN,
         SEINEN,
         SHOUJO,

@@ -1,0 +1,15 @@
+inicio
+	Nome:Naruto
+	Tipo:TV
+	Genero:Acao
+	Quantidade_Eps:250
+	Publico_Alvo:Shounen
+fim
+
+inicio
+	Nome:Naruto
+	Tipo:TV
+	Genero:Aventura
+	Quantidade_Eps:100
+	Publico_Alvo:Seinen
+fim

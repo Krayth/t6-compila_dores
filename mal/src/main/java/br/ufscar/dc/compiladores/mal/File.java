@@ -55,7 +55,7 @@ public class File {
                 "            }\n" +
                 "            #box {\n" +
                 "                width: 300px;\n" +
-                "                min-height: 300px;\n" +
+                "                min-height: 200px;\n" +
                 "                max-height: 400px;\n" +
                 "                border-style: solid;\n" +
                 "                border-color: #350A58;\n" +
@@ -155,6 +155,10 @@ public class File {
         for(int i = 0; i < divAvaliacao.size(); i++) {
             appendDivAvaliacao(i, "                </td></div>\n\n");
             File.append(divAvaliacao.get(i));
+
+            if(i == 3){
+                File.append("            <tr>\n");
+            }
         }
 
         File.append("            </tr>\n" +

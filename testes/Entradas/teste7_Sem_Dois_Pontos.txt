@@ -1,9 +1,9 @@
 inicio
-	Nome:N@ruto
+	Nome:Naruto
 	Tipo:TV
 	Genero:Acao
 	Quantidade_Eps:250
-	Publico_Alvo:Shounen
+	Publico_Alvo Shounen
 fim
 
 comeco_avaliacao
@@ -11,5 +11,5 @@ comeco_avaliacao
 	Nota:10
 	Status:Completo
 	250
-	{Muito ruim}
+	"Muito ruim"
 fim_avaliacao

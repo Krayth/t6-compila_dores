@@ -20,11 +20,7 @@ genero: 'Acao' | 'Aventura' | 'Drama' | 'Comedia' | 'Terror' |
         'SliceOfLife' | 'Sobrenatural' | 'Suspense' | 'Musical' |
         'Esporte';
 
-publico_alvo: 'Shounen' | 'Seinen' | 'Shoujo' | 'R18';
-
-statusCompleto: 'Completo';
-statusAssistindo: 'Assistindo';
-statusAbandonado: 'Abandonado';
+publico_alvo: 'Livre' | 'Shounen' | 'Seinen' | 'Shoujo' | 'R18';
 
 nome_anime: NOME;
 declare_nome: nome_anime;
@@ -65,16 +61,8 @@ ErroComentarioCodigo:
                     "Comentario de Código não Fechado.</div>\n");
     File.gravaArquivo(); };
 
-// ErroAddComentario:
-//     '"' 
-//     { File.AddString("                    <div id=\"erros\">" + 
-//                     "Comentario de Avaliação não Fechado.</div>\n");
-//     File.gravaArquivo(); };
-
 ANY: 
     .
     { File.AddString("                    <div id=\"erros\">" + 
                     "Símbolo não identificado</div>\n");
     File.gravaArquivo(); };
-
-//SIMBOLO_NAO_IDENTIFICADO: '~' | '$' | '@' | '|' | '`';

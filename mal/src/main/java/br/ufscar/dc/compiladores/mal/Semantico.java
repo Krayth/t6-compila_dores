@@ -100,6 +100,9 @@ public class Semantico extends malBaseVisitor<Void>{
             
             // Tratamento para inserir o nome do PUBLICO_ALVO do anime no arquivo HTML
             switch (publico_alvo_anime) {
+                case LIVRE:
+                    publico_alvoAnimeDiv = "Livre";
+                    break;
                 case SHOUNEN:
                     publico_alvoAnimeDiv = "Shounen";
                     break;
@@ -117,6 +120,7 @@ public class Semantico extends malBaseVisitor<Void>{
                     break;
             }
 
+            // Verifica se anime ja foi declarado com mesmo nome
             if (tabela.existe(nome_anime)) {
                 File.AddString("                    <div id=\"erros\">" + 
                     "Atenção!! O Anime " + nome_anime + " já existe.</div>\n");
@@ -149,7 +153,7 @@ public class Semantico extends malBaseVisitor<Void>{
 
         String statusDiv = "Erro";
 
-        
+        // Verifica se o anime avaliado foi declarado
         if (!(tabela.existe(nome_anime))) {
             File.AddString("                    <div id=\"erros\">" + 
             "Atenção!! O Anime " + nome_anime + " não existe.</div>\n");
@@ -158,9 +162,12 @@ public class Semantico extends malBaseVisitor<Void>{
             int total_eps_anime =  Integer.parseInt(tabela.verificar_Total_eps(nome_anime));
             int eps_assistidos_int = Integer.parseInt(eps_assistidos);
             
+            // Verifica se o numero de episodios assistidos e menor que o numero total
             if (eps_assistidos_int > total_eps_anime) {
                 File.AddString("                    <div id=\"erros\">" + 
                 "Atenção!! Erro Semântico: "+ eps_assistidos + " episódios assistidos maior do que o total.</div>\n");
+
+            // Tratamento para inserir o nome do STATUS da avaliacao no arquivo HTML
             } else {
                 switch (status) {
                     case COMPLETO:
